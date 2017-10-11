@@ -1,0 +1,25 @@
+@import 'normalize';
+
+.clearfix::after{
+    content: "";
+    clear: both;
+	overflow: hidden;
+    display: table;
+}
+
+.left{
+    float: left !important;
+}
+
+.right{
+    float: right !important;
+}
+
+.middle{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.check-layout{
+    background-color: rgba(244,158,156,.7);
+}
