@@ -1,0 +1,42 @@
+/* Folds */
+@mixin temp{	
+	max-width: 100%;
+	position: relative;
+}
+
+@mixin bg-parallax{
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: cover;
+    background-attachment: fixed;
+}
+
+@mixin bg-cover{
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: cover
+}
+
+/* Display Table Parent */
+@mixin table{
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+/* Display Table-cell Child */
+@mixin table-cell{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+@mixin absolute-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin border-radius($radius){
+	border-radius: $radius;
+}

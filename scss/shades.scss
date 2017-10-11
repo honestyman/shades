@@ -1,0 +1,126 @@
+@import 'base/base';
+@import 'variables/vars';
+@import 'mixins/mixins';
+
+/*Gameplay*/
+
+.wrap{
+	max-width: 100%;
+	height: 100vh;
+	position: relative;
+    background: #7f31c4;
+    background: url('http://localhost/shades/images/dark-bg.png') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    color: white;
+}
+
+.container{
+	max-width: 530px;
+    margin: 0 auto;
+    @include table;
+    
+    .content-wrap{
+        @include table-cell;
+        
+        .title-holder{
+            display: block;
+            margin: 0 auto;
+            
+            .score, .best{
+                width: 25%;
+                
+                font-size: .8em;
+            }
+            
+            
+            .title{
+                font-size: 1.5em;
+                width: 50%;
+                
+                h1{
+                    background: -webkit-linear-gradient(left, #2accff, #3fffe6);
+                    background: linear-gradient(top, #2accff, #000);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    width: 100%;
+                    overflow: hidden;
+                }
+            }
+            
+            >div{
+                text-align: center;
+                float: left;
+                padding-bottom: 10px;
+            }
+        }
+        
+    }
+}
+
+
+.box-container{
+	position: relative;
+    display: inline-table;
+    
+    .box{
+        color: white;
+        font-size: 300%;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        display: table;
+        margin: 1px;
+        
+        p{
+            @include table-cell;
+        }
+    }
+}
+
+.content-table{
+    text-align: center;
+}
+
+
+.takip{
+	background-color: dimgray;
+	width: 100px;
+	height: 100px;
+	padding: 10px;
+	margin: 10px;
+	position: absolute;
+	top: -20px;
+	left: 0;
+	opacity: 0;
+    border-radius: 15px;
+	display: none;
+}
+
+.hidden{
+	display: none;
+}
+
+/* PINKS */
+.shade1{
+	background-color: $blue1;
+}
+.shade2{
+	background-color: $blue2;
+}
+.shade3{
+	background-color: $blue3;
+}
+.shade4{
+	background-color: $blue4;
+}
+
+.reminder{
+	font-family: Helvetica, Arial, sans-serif;
+	margin-top: 10px;
+}
+
+@import 'templates/temps';
+@import 'media';
