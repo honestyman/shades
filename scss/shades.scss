@@ -28,8 +28,7 @@
             margin: 0 auto;
             
             .score, .best{
-                width: 25%;
-                
+                width: 25%;                
                 font-size: .8em;
             }
             
@@ -61,7 +60,7 @@
 
 .box-container{
 	position: relative;
-    display: inline-table;
+    display: inline-block;
     
     .box{
         color: white;
@@ -103,7 +102,7 @@
 	display: none;
 }
 
-/* PINKS */
+/* Shades */
 .shade1{
 	background-color: $blue1;
 }
@@ -122,5 +121,4 @@
 	margin-top: 10px;
 }
 
-@import 'templates/temps';
 @import 'media';

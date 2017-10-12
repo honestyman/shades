@@ -40,3 +40,7 @@
 @mixin border-radius($radius){
 	border-radius: $radius;
 }
+
+@mixin box-width($num_of_columns){
+    width: $num_of_columns / 12 * 100%;
+}
