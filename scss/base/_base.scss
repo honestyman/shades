@@ -15,11 +15,23 @@
     float: right !important;
 }
 
-.middle{
+.valign-mid{
     display: table-cell;
     vertical-align: middle;
 }
 
+.hidden{
+	display: none;
+}
+
 .check-layout{
     background-color: rgba(244,158,156,.7);
+}
+
+.answers{
+    display: table-cell;
+    text-align: center;
+    padding: 30px;
+    background-color: #23d223;
+    border-radius: 15px;
 }

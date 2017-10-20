@@ -6,6 +6,7 @@ html {
 
 *{
     box-sizing: border-box;
+    transition: all .25s ease-in-out;
 }
 
 body {
@@ -14,8 +15,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	background-color: white;
-	font-family: Raleway, Helvetica, Arial, sans-serif;
-	color: #404041
+	font-family: Helvetica, Arial, sans-serif;
+    color: white;
 }
 
 h1,
