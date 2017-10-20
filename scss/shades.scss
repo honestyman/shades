@@ -1,6 +1,35 @@
+/**
+    Project: Shades
+    Author: rhanmiano
+    Description: Scss file for the layouting of webpages of Shades
+**/
+
 @import 'base/base';
 @import 'variables/vars';
 @import 'mixins/mixins';
+
+@font-face {
+    font-family: 'Ultima';
+    src: url('fonts/Ultima.ttf') format('ttf'),
+         url('fonts/Ultima.woff') format('woff'),
+         url('fonts/Ultima.woff2') format('woff2'),
+         url('fonts/Ultima.eot') format('eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ultima Bold';
+    src: url('fonts/ultima-bold.ttf') format('ttf'),
+         url('fonts/ultima-bold.woff') format('woff'),
+         url('fonts/ultima-bold.woff2') format('woff2'),
+         url('fonts/ultima-bold.eot') format('eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+
 
 /*Gameplay*/
 
@@ -12,55 +41,55 @@
     background: url('http://localhost/shades/images/dark-bg.png') no-repeat center center;
     background-size: cover;
     overflow: hidden;
-    color: white;
+    font-family: 'Ultima', Arial, sans-serif;
 }
 
 .container{
-	max-width: 530px;
-    margin: 0 auto;
-    @include table;
+    height: 100%;
+    display: block;
+    *zoom: 1;
     
-    .content-wrap{
-        @include table-cell;
-        
-        .title-holder{
-            display: block;
-            margin: 0 auto;
-            
-            .score, .best{
-                width: 25%;                
-                font-size: .8em;
-            }
-            
-            
-            .title{
-                font-size: 1.5em;
-                width: 50%;
-                
-                h1{
-                    background: -webkit-linear-gradient(left, #2accff, #3fffe6);
-                    background: linear-gradient(top, #2accff, #000);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    width: 100%;
-                    overflow: hidden;
-                }
-            }
-            
-            >div{
-                text-align: center;
-                float: left;
-                padding-bottom: 10px;
-            }
-        }
-        
+    &::before,
+    &::after{
+        content: '';
+        display: table;
+        line-height: 0;        
+    }
+    
+    &::after{
+        clear: both;
+    }
+    
+    > div:first-child{
+        padding-left: 10px;
+    }
+    
+    > div:last-child{
+        padding-right: 10px;
     }
 }
 
+#tbl{
+    display: table;   
+    
+}
+
+.col-mid{
+    width: 450px;
+    @include absolute-center;
+    min-height: 100%;
+}
+
+
+.card-holder{
+    position: relative;
+    @include table-cell;
+    text-align: center;
+}
 
 .box-container{
-	position: relative;
-    display: inline-block;
+    position: relative;
+    display: inline-grid;
     
     .box{
         color: white;
@@ -69,37 +98,92 @@
         text-align: center;
         width: 100px;
         height: 100px;
+        margin: 1px;
         cursor: pointer;
         display: table;
-        margin: 1px;
         
         p{
             @include table-cell;
+            font-family: 'Roboto Slab', Helvetica, sans-serif;
+            font-weight: 700;
+        }
+    }
+    
+    
+}
+
+section.card-content{
+    display: inline-block;
+}
+
+.card-header{
+    width: 400px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    
+    
+    #score p, #best p{
+        font-size: 1.2em;
+    }
+    
+    #score{
+        margin-right: 130px;
+    }
+    
+    #best{
+        margin-left: 130px;
+    }
+    
+    #title{
+        font-size: 2em;
+        font-family: 'Ultima Bold', Ultima, Arial, Helvetica, sans-serif;
+        padding-top: 10px;
+        
+        p{
+            background: -webkit-linear-gradient(left, #2accff, #3fffe6);
+            background: linear-gradient(top, #2accff, #000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 100%;
+            overflow: hidden;
+            font-size: 2em;
+            letter-spacing: -3px;
+            position: absolute;
+            top: 18%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 }
 
-.content-table{
+.card-footer{
+    position: absolute;
+    top: 89%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     text-align: center;
-}
+    
+    div{
+        display: block; 
+        max-width: 100%;
+        
+        #how-to, #theme{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        #how-to{
+            margin-left: 25px;
+        }
 
-
-.takip{
-	background-color: dimgray;
-	width: 100px;
-	height: 100px;
-	padding: 10px;
-	margin: 10px;
-	position: absolute;
-	top: -20px;
-	left: 0;
-	opacity: 0;
-    border-radius: 15px;
-	display: none;
-}
-
-.hidden{
-	display: none;
+        #theme{
+            margin-right: 25px;
+        }
+    }
+    
+    
+    
 }
 
 /* Shades */
@@ -114,11 +198,6 @@
 }
 .shade4{
 	background-color: $blue4;
-}
-
-.reminder{
-	font-family: Helvetica, Arial, sans-serif;
-	margin-top: 10px;
 }
 
 @import 'media';
