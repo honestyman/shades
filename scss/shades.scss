@@ -38,7 +38,9 @@
 	height: 100vh;
 	position: relative;
     background: #7f31c4;
-    background: url('http://localhost/shades/images/dark-bg.png') no-repeat center center;
+    background: url('http://localhost/shades/images/dark-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     overflow: hidden;
     font-family: 'Ultima', Arial, sans-serif;
@@ -182,8 +184,18 @@ section.card-content{
         }
     }
     
-    
-    
+}
+
+.takip{
+	background-color: #dcdcdc;
+	width: 100px;
+	height: 100px;
+	margin: 1px;
+	position: absolute;
+	top: -20px;
+	left: 0;
+	opacity: 0;
+	display: none;
 }
 
 /* Shades */

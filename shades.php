@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="scss/shades.css.min">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="scss/shades.min.css">
     
     <title>Play Shades</title>
     
@@ -16,7 +17,7 @@
         <div class="container">
             <div class="left">
                 <img src="images/shades-logo-w80.png" alt="Shades Logo" style="margin-top: 10; cursor: pointer;" onclick="generateBoxes()" />
-                <div class="answers">
+                <div class="answers" style="display: none">
                     <p>Path 1 = <span class="path1"></span></p>
                     <p>Path 2 = <span class="path2"></span></p>
                     <p>Path 3 = <span class="path3"></span></p>
@@ -59,7 +60,7 @@
                 </div>
             </div>
             <div class="right" id="#">
-                <h1>test</h1>
+                <a href="btn">leaderboard</a>
             </div>
         </div>        
     </div>    
