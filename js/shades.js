@@ -92,6 +92,22 @@ jQuery(document).ready(function($){
             }
         }, 1000);					
     });
+    
+    $(function(){
+        $(".takip").delay(10000).animate({
+            "opacity": "1",
+            "top": "0"
+        }, 500);
+    });
+    
+    $(function(){
+        $("#theme").click(function(){
+            var theme1 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/dark-bg.png')";
+            
+            var theme2 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/light-bg.png')";
+        });
+    });
+
 });
 
 function generateBoxes(){
@@ -175,7 +191,7 @@ function createEachBox(){
             }
 
 
-            $('.card-holder').append("<div class='box-container'><div class='box " + current_color + "' id='" + box_id_number + "'><p>" + current_val + "</p></div></div>");
+            $('.card-holder').append("<div class='box-container'><div class='box " + current_color + "' id='" + box_id_number + "'><p>" + current_val + "</p></div><div class='takip'></div></div>");
 
             out_value.push(current_val);
             box_id_number += 1;
