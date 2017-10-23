@@ -1,8 +1,8 @@
 # Sass Cache
-scss/.sass-cache/*
+.sass-cache/
 
 # Sass maps
-scss/*.map
+*.map
 
 # Logs
 *.log
