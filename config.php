@@ -12,7 +12,7 @@ session_start();
 function current_page(){
     $page_title = "";
     $url = $_SERVER["SCRIPT_NAME"];
-    $break = Explode('/', $url);
+    $break = explode('/', $url);
     $file = $break[count($break) - 1];
     
     if($file == 'index.php')
