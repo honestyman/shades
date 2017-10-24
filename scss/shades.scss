@@ -30,9 +30,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
 
-
-/*Gameplay*/
-
 .wrap{
 	max-width: 100%;
 	height: 100vh;
@@ -43,12 +40,14 @@
     background-position: center center;
     background-size: cover;
     overflow: hidden;
-    font-family: 'Ultima', Arial, sans-serif;
+    font-family: $Ultima;
 }
 
 .container{
     height: 100%;
     display: block;
+    max-width: 1024px;
+    margin:  0 auto;
     *zoom: 1;
     
     &::before,
@@ -71,10 +70,24 @@
     }
 }
 
-#tbl{
-    display: table;   
-    
+[class*="col-"]{
+    float: left;
+    width: 100%;
+    height: 100%;
 }
+
+.col-1 { @include column-width(1); }
+.col-2 { @include column-width(2); }
+.col-3 { @include column-width(3); }
+.col-4 { @include column-width(4); }
+.col-5 { @include column-width(5); }
+.col-6 { @include column-width(6); }
+.col-7 { @include column-width(7); }
+.col-8 { @include column-width(8); }
+.col-9 { @include column-width(9); }
+.col-10 { @include column-width(10); }
+.col-11 { @include column-width(11); }
+.col-12 { @include column-width(12); }
 
 .col-mid{
     width: 450px;
@@ -83,6 +96,173 @@
 }
 
 
+#tbl{
+    display: table;
+}
+
+/*Home*/
+.title{
+    font-size: 1.2em;
+    font-family: $UltimaB;
+    
+    .valign-mid{
+        margin-left: 30px;
+    }
+    
+    p{
+        @include gradient-title;
+        
+    }
+    
+    p:first-child{
+        font-size: 4em;
+    } 
+    
+    .desc{
+        font-size: .77em;
+        
+        + button{
+            margin: 50px 0;
+        }
+    }
+}
+
+.container .col-6 > section {
+    display: block;
+}
+
+/*Buttons*/
+[class*="btn-"]{
+    text-transform: lowercase;
+    color: white;
+    border-radius: 5px;
+    font-family: $UltimaB;
+    cursor: pointer;
+}
+
+.btn-blue{
+    background-color: #1d88e6;
+    border: none;
+    border-bottom: 1px solid #313131;
+}
+
+.btn-orange{
+    background-color: #f7632f;
+    border: none;
+    border-bottom: 1px solid #313131;
+    
+}
+.btn-default{
+    font-size: 1em;
+    padding: 10px 20px;
+}
+
+.btn-wide{
+    font-size: 1em;
+    padding: 10px 40px;
+}
+
+.btn-big{
+    font-size: 2em;
+    padding: 20px 40px;
+}
+
+.modal-btn{
+    text-decoration: underline;
+    font-family: $Ultima;
+    margin-bottom: 30px;
+}
+
+.creator{
+    font-family: 'Roboto Slab', Helvetica, sans-serif;
+    font-size: .75em;
+}
+
+/*Modals*/
+.modal-wrap{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow: hidden;
+    
+    .modal-container{
+        width: 420px;
+        height: inherit;
+        margin: 0 auto;
+        background-color: white;
+        color: #2d2d2d;
+        padding: 50px;
+        border-radius: 5px;
+        @include absolute-center;
+        
+        .modal-head{
+            
+            h1{
+                @include gradient-title;
+            }
+        }
+        
+        .modal-body {
+            
+            a {text-align: center;
+            display: block;
+            margin: 0;
+            }
+            
+            button{
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+/*Forms*/
+.form-wrap{
+    position: relative;
+    
+    input[type="email"], input[type="password"]{
+        width: 100%;
+        border: 2px solid #cbcbcb;
+        color: #2d2d2d;
+        height: 40px;
+        border-radius: 5px;
+        padding-left: 10px;
+        font-family: $Ultima;
+    }
+    
+    input[type="email"]::placeholder, input[type="password"], input[type="text"]{
+        
+    }
+    
+    input:first-child{
+        margin-top: 30px;
+    }
+    
+    input::placeholder{
+        font-family: $Ultima;
+        color: #cbcbcb;
+    }
+    
+    input[type="submit"]{
+        display: block;
+        margin: 30px auto;
+    }
+    
+    .valid{
+        font-size: .7em;
+        color: indianred;
+        padding: 5px 0 0 5px;
+        margin-bottom: 10px;
+    }
+    
+}
+
+/*Gameplay*/
 .card-holder{
     position: relative;
     @include table-cell;
@@ -136,18 +316,11 @@ section.card-content{
         margin-left: 130px;
     }
     
-    #title{
-        font-size: 2em;
-        font-family: 'Ultima Bold', Ultima, Arial, Helvetica, sans-serif;
+    .title{
+                
         padding-top: 10px;
         
-        p{
-            background: -webkit-linear-gradient(left, #2accff, #3fffe6);
-            background: linear-gradient(top, #2accff, #000);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            width: 100%;
-            overflow: hidden;
+        p{           
             font-size: 2em;
             letter-spacing: -3px;
             position: absolute;
@@ -200,16 +373,16 @@ section.card-content{
 
 /* Shades */
 .shade1{
-	background-color: $blue1;
+	background-color: $shade1;
 }
 .shade2{
-	background-color: $blue2;
+	background-color: $shade2;
 }
 .shade3{
-	background-color: $blue3;
+	background-color: $shade3;
 }
 .shade4{
-	background-color: $blue4;
+	background-color: $shade4;
 }
 
 @import 'media';

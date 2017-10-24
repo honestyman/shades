@@ -41,6 +41,15 @@
 	border-radius: $radius;
 }
 
-@mixin box-width($num_of_columns){
-    width: $num_of_columns / 12 * 100%;
+@mixin column-width($number-of-columns) {
+    width: $number-of-columns / 12 * 100%;
+}
+
+@mixin gradient-title{
+    background: -webkit-linear-gradient(left, #2accff, #3fffe6);
+    background: linear-gradient(top, #2accff, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 100%;
+    overflow: hidden;
 }
