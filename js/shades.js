@@ -107,7 +107,21 @@ jQuery(document).ready(function($){
             var theme2 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/light-bg.png')";
         });
     });
-
+    
+    $('.reg-email').on('input', function(e){
+        var a = $(this).val();
+        var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        
+        if(a.length === 0){
+            $('email').html("Please put your email");
+        }
+        else if((a.length > 1) && mailformat.test(a)){
+            
+            $('.valid-email').html('Good to go!');
+        }
+        else
+            $('.valid-email').html("Invalid Email");
+    });
 });
 
 function generateBoxes(){
