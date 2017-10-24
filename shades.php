@@ -7,7 +7,7 @@
 <div class="wrap">
     <div class="container">
         <div class="left">
-            <img src="images/shades-logo-w80.png" alt="Shades Logo" style="margin-top: 10; cursor: pointer;" onclick="generateBoxes()" />
+            <img src="images/shades-logo-w80.png" alt="Shades Logo" />
             <div class="answers" style="display: none">
                 <p>Path 1 = <span class="path1"></span></p>
                 <p>Path 2 = <span class="path2"></span></p>
@@ -17,13 +17,13 @@
         </div>
         <div class="col-mid" id="tbl">
 
-            <div class="card-holder valign-mid">
+            <div class="card-holder">
                 <div class="card-header">
                 <section class="card-content" id="score">
                     <p>SCORE</p>
                     <p class="score-here">0</p>
                 </section>
-                <section class="card-content" id="title">
+                <section class="card-content title">
                     <p>shades</p>
                 </section>
                 <section class="card-content" id="best">
@@ -37,15 +37,15 @@
             </div>
             <div class="card-footer">
                <div class="container">
-                    <section class="card-content left" id="how-to">
-                    <p>How to Play</p>
+                    <section class="card-content modal-btn left" id="how-to">
+                        <a href="#">How to Play</a>
                     </section>
                     <section class="card-content" id="time">
                         <h1>TIME</h1>
                         <h1>:<span class="secs">10</span></h1>
                     </section>
-                    <section class="card-content right" id="theme">
-                        <p>Light Theme<p>
+                    <section class="card-content modal-btn right" id="theme">
+                        <a href="#">Light Theme</a>
                     </section> 
                </div>                                      
             </div>
