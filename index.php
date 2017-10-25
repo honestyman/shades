@@ -36,7 +36,9 @@
                     <div class="modal-body">
                         <form class="form-wrap" action="#" method="post">
                             <input type="email" name="email" placeholder="email">
+                            <p class="valid valid-email">Please enter your registered email</p>
                             <input type="password" name="password" placeholder="password">
+                            <p class="valid valid-email">Please enter your password</p>
                             <input class="btn-blue btn-wide" type="submit" value="sign in">
                         </form>
                         <a href="#" class="modal-btn">Or register an account</a>
@@ -52,17 +54,22 @@
                     <div class="modal-body">
                         <form class="form-wrap" action="#" method="post">
                             <input type="email" name="reg-email" class="reg-email" placeholder="email">
-                            <p class="valid valid-email" style="color: red">&nbsp;</p>
-                            <input type="password" name="password" placeholder="password">
-                            <p class="valid eml-valid" style="color: red">Please enter your password (Min: 8 characters)</p>
-                            <input type="password" name="password-confirm" placeholder="confirm password">
-                            <p class="valid eml-valid" style="color: red">Confirm your password</p>
-                            <input class="btn-orange btn-wide" type="submit" value="register">
+                            <p class="valid valid-email">Please enter your email</p>
+                            <input type="password" name="password" class="reg-pass" placeholder="password">
+                            <p class="valid valid-pass">Please enter your password</p>
+                            <input type="password" name="confirm-pass" class="confirm-pass" placeholder="confirm password">
+                            <p class="valid valid-confirm-pass">Please retype your password</p>
+                            <input class="js-btn btn-orange btn-wide" type="submit" value="register" >
+                            
+                            <div class="notice success">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, error.
+                            </div>
                         </form>
                         <a href="#" class="modal-btn">I have an account</a>
                     </div>
                 </div>
             </div>
+            
             
         </div>
     </div>

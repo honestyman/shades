@@ -8,6 +8,33 @@
 //As webpage opens start session
 session_start();
 
+//Variables Declaration;
+$page_error = "";
+$database_error = "";
+
+DEFINE ('DB_NAME', 'dbase_shades');
+DEFINE ('DB_USER', 'root');
+DEFINE ('DB_PASSWORD', '');
+DEFINE ('DB_HOST', 'localhost');
+
+//Database configuration
+function dbaseCon(){
+    
+    /* Attempt MySQL server connection.*/
+    $dbcon = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+
+    // Check connection
+    if(!$dbcon){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
+    
+    $dbaccess = mysqli_select_db($dbcon, DB_NAME);
+    
+    if(!$dbaccess){
+        die ('Unable to access the Database ' . DB_NAME . mysql_error());
+    }
+}
+
 //Dynamically set title
 function current_page(){
     $page_title = "";
@@ -22,4 +49,7 @@ function current_page(){
     
     return $page_title;
 } 
+
+dbaseCon();
+
 ?>
