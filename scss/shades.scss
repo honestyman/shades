@@ -196,7 +196,7 @@
         background-color: white;
         color: #2d2d2d;
         padding: 50px;
-        border-radius: 5px;
+        border-radius: 10px;
         @include absolute-center;
         
         .modal-head{
@@ -255,11 +255,29 @@
     
     .valid{
         font-size: .7em;
-        color: indianred;
         padding: 5px 0 0 5px;
         margin-bottom: 10px;
     }
     
+}
+
+/*Notices*/
+.notice{
+    display: block;
+    text-align: center;
+    font-size: .8em;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: -150px;
+}
+
+.success{
+    background-color: rgba(0,255,0,.5);
+}
+
+.error{
+    background-color: rgba(255,0,0,.5);
 }
 
 /*Gameplay*/
