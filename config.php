@@ -18,7 +18,6 @@ DEFINE ('DB_PASSWORD', '');
 DEFINE ('DB_HOST', 'localhost');
 
 //Database configuration
-function dbaseCon(){
     
     /* Attempt MySQL server connection.*/
     $dbcon = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
@@ -33,10 +32,9 @@ function dbaseCon(){
     if(!$dbaccess){
         die ('Unable to access the Database ' . DB_NAME . mysql_error());
     }
-}
 
 //Dynamically set title
-function current_page(){
+function currentPage(){
     $page_title = "";
     $url = $_SERVER["SCRIPT_NAME"];
     $break = explode('/', $url);
@@ -48,8 +46,15 @@ function current_page(){
         $page_title = "Shades | Play";
     
     return $page_title;
-} 
+}
 
-dbaseCon();
+//Cleaning Form Inputs
+function clean_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    $data = mysql_real_escape_string($data);
+    return $data;
+}
 
 ?>

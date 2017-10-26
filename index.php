@@ -52,19 +52,21 @@
                         <h1>Register an account</h1>
                     </div>
                     <div class="modal-body">
-                        <form class="form-wrap" action="#" method="post">
+                        <form class="form-wrap" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" id="reg-form">
                             <input type="email" name="reg-email" class="reg-email" placeholder="email">
                             <p class="valid valid-email">Please enter your email</p>
-                            <input type="password" name="password" class="reg-pass" placeholder="password">
+                            <input type="password" name="reg-pass" class="reg-pass" placeholder="password">
                             <p class="valid valid-pass">Please enter your password</p>
                             <input type="password" name="confirm-pass" class="confirm-pass" placeholder="confirm password">
                             <p class="valid valid-confirm-pass">Please retype your password</p>
-                            <input class="js-btn btn-orange btn-wide" type="submit" value="register" >
+                            <button class="js-btn btn-orange btn-wide" name="reg" id="reg" disabled>register</button>
                             
-                            <div class="notice success">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, error.
-                            </div>
+                            <?php
+                                include('register.php');
+                            ?>
+                            <!--<div class="notice success"></div>-->
                         </form>
+                        
                         <a href="#" class="modal-btn">I have an account</a>
                     </div>
                 </div>
