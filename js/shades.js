@@ -100,101 +100,15 @@ jQuery(document).ready(function($){
         }, 500);
     });
     
-    $(function(){
+    /*$(function(){
         $("#theme").click(function(){
             var theme1 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/dark-bg.png')";
             
             var theme2 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/light-bg.png')";
         });
-    });
-    
-    // Form Validations
-    
-    $('.reg-email').on('input', function(e){
-        var a = $(this).val();
-        var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        
-        if(a.length === 0){
-            $('.valid-email').css('color', 'red');
-            $('.valid-email').html("This is a required field");
-        }
-        else if((a.length > 0) && mailformat.test(a)){  
-            $('.valid-email').css('color', 'green');
-            $('.valid-email').html('Good to go!');
-        }
-        else{
-            $('.valid-email').css('color', 'red');
-            $('.valid-email').html("Invalid Email");  
-        }            
-    });
-    
-    $('.reg-pass').on('input', function(e){
-        var a = $(this).val();
-        var conf_pass = $('.confirm-pass').val();
-        
-        if((conf_pass.length > 0) && (a===conf_pass)){
-            $('.valid-confirm-pass').css('color', 'green');
-            $('.valid-confirm-pass').html('Good to go!');
-        }
-        else if((conf_pass.length > 0) && (a.length === 0)){
-            $('.valid-confirm-pass').css('color', 'red');
-            $('.valid-confirm-pass').html("Password mismatch"); 
-        }
-        else if((conf_pass.length > 0) && (a!=conf_pass)){
-            $('.valid-confirm-pass').css('color', 'red');
-            $('.valid-confirm-pass').html("Password mismatch"); 
-        }
-        
-        if(a.length === 0){
-            $('.valid-pass').css('color', 'red');
-            $('.valid-pass').html("This is a required field");
-            
-        }
-        else if((a.length > 7)){  
-            $('.valid-pass').css('color', 'green');
-            $('.valid-pass').html('Good to go!');
-        }                
-        else{
-            $('.valid-pass').css('color', 'red');
-            $('.valid-pass').html("Password should be minimum of 8 characters"); 
-        }            
-    });    
-    
-    $('.confirm-pass').on('input', function(e){
-        var pass = $('.reg-pass').val();
-        var a = $(this).val();
-        if(a.length === 0){
-            $('.valid-confirm-pass').css('color', 'red');
-            $('.valid-confirm-pass').html("This is a required field");
-            
-        }
-        else if((a === pass)){  
-            $('.valid-confirm-pass').css('color', 'green');
-            $('.valid-confirm-pass').html('Good to go!');
-        }                
-        else{
-            $('.valid-confirm-pass').css('color', 'red');
-            $('.valid-confirm-pass').html("Password mismatch"); 
-        }            
-    });
+    });*/
     
 });
-
-//Disable register button while all fields has validation errors
-
-var prompt_email = document.getElementsByClassName('valid-email').value,
-    prompt_pass = document.getElementsByClassName('valid-pass').value,
-    prompt_cpass = document.getElementsByClassName('valid-confirm-pass').value;
-
-jQuery('.notice').html(prompt_email);
-
-/*if((prompt_email && prompt_pass && prompt_cpass) != 'Good to go!'){
-    document.getElementsByClassName("js-btn").disabled = true;
-}
-else{
-    document.getElementsByClassName("js-btn").disabled = false;
-}*/
-
 
 function generateBoxes(){
     

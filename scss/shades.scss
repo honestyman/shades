@@ -138,20 +138,24 @@
     border-radius: 5px;
     font-family: $UltimaB;
     cursor: pointer;
+    border: none;
+    border-bottom: 1px solid #313131;
 }
 
 .btn-blue{
-    background-color: #1d88e6;
-    border: none;
-    border-bottom: 1px solid #313131;
+    background-color: #1d88e6 !important;
+    
 }
 
 .btn-orange{
-    background-color: #f7632f;
-    border: none;
-    border-bottom: 1px solid #313131;
-    
+    background-color: #f7632f !important;   
 }
+
+.btn-disabled{
+    background-color: #2d2d2d;
+}
+
+
 .btn-default{
     font-size: 1em;
     padding: 10px 20px;
@@ -248,9 +252,9 @@
         color: #cbcbcb;
     }
     
-    input[type="submit"]{
+    input[type="submit"], button{
         display: block;
-        margin: 30px auto;
+        margin: 30px auto !important;
     }
     
     .valid{
@@ -268,16 +272,15 @@
     font-size: .8em;
     color: white;
     padding: 10px;
-    position: absolute;
-    bottom: -150px;
+    margin-bottom: 20px;
 }
 
 .success{
-    background-color: rgba(0,255,0,.5);
+    background-color: rgba(0,255,0,.7);
 }
 
 .error{
-    background-color: rgba(255,0,0,.5);
+    background-color: rgba(255,0,0,.7);
 }
 
 /*Gameplay*/
