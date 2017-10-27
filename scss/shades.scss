@@ -60,14 +60,6 @@
     &::after{
         clear: both;
     }
-    
-    > div:first-child{
-        padding-left: 10px;
-    }
-    
-    > div:last-child{
-        padding-right: 10px;
-    }
 }
 
 [class*="col-"]{
@@ -177,6 +169,10 @@
     margin-bottom: 30px;
 }
 
+.js-btn{
+    opacity: 0.7;
+}
+
 .creator{
     font-family: 'Roboto Slab', Helvetica, sans-serif;
     font-size: .75em;
@@ -229,7 +225,7 @@
 .form-wrap{
     position: relative;
     
-    input[type="email"], input[type="password"]{
+    input[type="email"], input[type="password"],input[type="text"]{
         width: 100%;
         border: 2px solid #cbcbcb;
         color: #2d2d2d;
@@ -282,6 +278,25 @@
 .error{
     background-color: rgba(255,0,0,.7);
 }
+
+/*Error Pages*/
+.error-page{
+    text-align: center;
+    
+    >p{
+        font-size: 2em;
+    }
+    
+    img{
+        margin: 30px 0;
+    }
+    
+    > .modal-btn{
+        margin-top: 10px;
+        display: block;
+    }
+}
+
 
 /*Gameplay*/
 .card-holder{
