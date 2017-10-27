@@ -1,0 +1,164 @@
+// Form Validations for Register
+var good_email = false, good_pass = false, good_cpass =false;
+
+$('.reg-email').on('input', function(e){
+    var a = $(this).val();
+    var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if(a.length === 0){
+        $('.valid-email').css('color', 'red');
+        $('.valid-email').html("This is a required field");
+        good_email = false;
+    }
+    else if((a.length > 0) && mailformat.test(a)){  
+        $('.valid-email').css('color', 'green');
+        $('.valid-email').html('Good to go!');
+        good_email = true;
+    }
+    else{
+        $('.valid-email').css('color', 'red');
+        $('.valid-email').html("Invalid Email");  
+        good_email = false;
+    }            
+});
+
+$('.reg-pass').on('input', function(e){
+    var a = $(this).val();
+    var conf_pass = $('.confirm-pass').val();
+
+    if((conf_pass.length > 0) && (a===conf_pass)){
+        $('.valid-confirm-pass').css('color', 'green');
+        $('.valid-confirm-pass').html('Good to go!');
+        good_cpass = true;
+    }
+    else if((conf_pass.length > 0) && (a.length === 0)){
+        $('.valid-confirm-pass').css('color', 'red');
+        $('.valid-confirm-pass').html("Password mismatch");
+        good_cpass = false;
+    }
+    else if((conf_pass.length > 0) && (a!=conf_pass)){
+        $('.valid-confirm-pass').css('color', 'red');
+        $('.valid-confirm-pass').html("Password mismatch");
+        good_cpass = false;
+    }
+
+    if(a.length === 0){
+        $('.valid-pass').css('color', 'red');
+        $('.valid-pass').html("This is a required field");
+        good_pass = false;
+
+    }
+    else if((a.length > 7)){  
+        $('.valid-pass').css('color', 'green');
+        $('.valid-pass').html('Good to go!');
+        good_pass = true;
+    }                
+    else{
+        $('.valid-pass').css('color', 'red');
+        $('.valid-pass').html("Password should be minimum of 8 characters");
+        good_pass = false;
+    }            
+});    
+
+$('.confirm-pass').on('input', function(e){
+    var pass = $('.reg-pass').val();
+    var a = $(this).val();
+    if(a.length === 0){
+        $('.valid-confirm-pass').css('color', 'red');
+        $('.valid-confirm-pass').html("This is a required field");
+        good_cpass = false;
+
+    }
+    else if((a === pass)){  
+        $('.valid-confirm-pass').css('color', 'green');
+        $('.valid-confirm-pass').html('Good to go!');
+        good_cpass = true;
+    }                
+    else{
+        $('.valid-confirm-pass').css('color', 'red');
+        $('.valid-confirm-pass').html("Password mismatch");
+        good_cpass = false;
+    }            
+});
+
+$('.confirm-pass, .reg-pass, .reg-email').on('input', function(e){
+    if(good_email && good_pass && good_cpass){            
+        $('.js-btn').css('opacity', '1');
+        $('.js-btn').removeAttr('disabled');
+
+    }
+    else if(!(good_email && good_pass && good_cpass)){
+        $('.js-btn').css('opacity', '0.5');
+        $('.js-btn').prop('disabled', true);
+    }                 
+});
+
+// Form Validations for Verification
+var good_code = false, good_nick = false;
+var getCode = $('.thecode').text();
+$('.thecode').append(getCode);
+
+$('.code').on('input', function(e){
+    var a = $(this).val();
+    if(a.length === 0){
+        $('.valid-code').css('color', 'red');
+        $('.valid-code').html("This is a required field");
+        good_code = false;
+
+    }
+    else if((a === getCode)){  
+        $('.valid-code').css('color', 'green');
+        $('.valid-code').html('Good to go!');
+        good_code = true;
+    }                
+    else{
+        $('.valid-code').css('color', 'red');
+        $('.valid-code').html("Invalid Code");
+        good_code = false;
+    }            
+});
+
+$('.nick').on('input', function(e){
+    var a = $(this).val();
+    if(a.length === 0){
+        $('.valid-nick').css('color', 'red');
+        $('.valid-confirm-pass').html("This is a required field");
+        good_nick = false;
+
+    }
+    else if((a.length > 3)){  
+        $('.valid-nick').css('color', 'green');
+        $('.valid-nick').html('Good to go!');
+        good_nick = true;
+    }                
+    else{
+        $('.valid-nick').css('color', 'red');
+        $('.valid-nick').html("Minimum of 4 characters");
+        good_nick = false;
+    }            
+});
+
+$('.code, .nick').on('input', function(e){
+    if(good_code && good_nick){            
+        $('.js-btn').css('opacity', '1');
+        $('.js-btn').removeAttr('disabled');
+
+    }
+    else if(!(good_code && good_nick)){
+        $('.js-btn').css('opacity', '0.5');
+        $('.js-btn').prop('disabled', true);
+    }                 
+});
+
+//Make sure to clear input after submitting
+$('.js-btn').click(function(){
+        clearInput();
+});
+
+function clearInput(){
+    $('#reg-form:input').each(function(){        
+        $(this).val('');
+    });
+}
+
+

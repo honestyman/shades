@@ -5,6 +5,13 @@
     Author: rhanmiano
 */
 
+define('SITE_NAME', 'SHADES');
+define('PROTOCOL',(!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://',true);
+define('DOMAIN',$_SERVER['HTTP_HOST']);
+define('SITE_URL', preg_replace("/\/$/",'',PROTOCOL.DOMAIN.str_replace(array('\\',"index.php","index.html"), '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))),1).'/',true);// Remove backslashes for Windows compatibility
+
+$site_url = str_replace('\\', '/', SITE_URL);
+    
 //As webpage opens start session
 session_start();
 
@@ -44,17 +51,48 @@ function currentPage(){
         $page_title = "Shades | Home";
     else if($file == 'shades.php')
         $page_title = "Shades | Play";
+    else if($file == 'verification.php')
+        $page_title = "Shades | Verify Account";
+    else if($file == '404.php')
+        $page_title = "Error 404";
+    else if($file == '403.php')
+        $page_title = "Access Denied!";
     
     return $page_title;
 }
 
 //Cleaning Form Inputs
-function clean_input($data){
+function clean_input($con, $data){
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    $data = mysql_real_escape_string($data);
+    $data = mysqli_real_escape_string($con, $data);
     return $data;
 }
 
+//Redirect to somewhere
+function redirect($url){
+    if (!headers_sent())
+    {    
+        header('Location: '.$url);
+        exit;
+        }
+    else
+        {  
+        echo '<script type="text/javascript">';
+        echo 'window.location.href="'.$url.'";';
+        echo '</script>';
+        echo '<noscript>';
+        echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+        echo '</noscript>'; exit;
+    }
+}
+
+//Handle Sessions for Verification, Login and Logout
+function  accessVerification(){
+    if(isset($_COOKIE['valid-code']) && $_COOKIE['current-email']){
+        $onVerification = true;
+        return $onVerification;
+    }
+}
 ?>
