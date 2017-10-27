@@ -1,3 +1,5 @@
+Options -Indexes
+
 RewriteEngine On
-RewriteBase /
-RewriteRule ^home /index.php
+ErrorDocument 404 /shades/404.php
+ErrorDocument 403 /shades/403.php
