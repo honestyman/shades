@@ -27,10 +27,10 @@
                     
                         <button class="btn-blue btn-big" id="js-play-btn">Play</button>
                         <section class="modal-btn" id="how-to">
-                            <a href="#">How to Play</a>
+                            <span>How to Play</span>
                         </section>
                         <section class="modal-btn" id="theme">
-                            <a href="#">Light Theme</a>
+                            <span>Light Theme</span>
                         </section>
                         <span class="creator">Made with &nbsp; &hearts; &nbsp; by Carl | Rhan | Shaun | Daniel</span>
                     </div>

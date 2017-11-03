@@ -74,7 +74,7 @@ jQuery(document).ready(function($){
     });
     
     
-    $("#theme > a").click(function(){
+    $("#theme > span").click(function(){
         var current_theme = $('.wrap').css('background-image');
         var a = 'url("http://localhost/shades/images/dark-bg.png")';
         var b = 'url("http://localhost/shades/images/light-bg.png")'
