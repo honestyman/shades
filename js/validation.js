@@ -93,10 +93,66 @@ $('.confirm-pass, .reg-pass, .reg-email').on('input', function(e){
     }                 
 });
 
+//Form Validations for Login
+var good_lemail = false, good_lpass = false;
+
+$('.log-email').on('input', function(e){
+    var a = $(this).val();
+    var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if(a.length === 0){
+        $('.valid-log-email').css('color', 'red');
+        $('.valid-log-email').html("This is a required field");
+        good_lemail = false;
+    }
+    else if((a.length > 0) && mailformat.test(a)){  
+        $('.valid-log-email').css('color', 'green');
+        $('.valid-log-email').html('Good to go!');
+        good_lemail = true;
+    }
+    else{
+        $('.valid-log-email').css('color', 'red');
+        $('.valid-log-email').html("Invalid Email");  
+        good_lemail = false;
+    }            
+});
+
+$('.log-pass').on('input', function(e){
+    var a = $(this).val();
+
+    if(a.length === 0){
+        $('.valid-log-pass').css('color', 'red');
+        $('.valid-log-pass').html("This is a required field");
+        good_lpass = false;
+
+    }
+    else if((a.length > 7)){  
+        $('.valid-log-pass').css('color', 'green');
+        $('.valid-log-pass').html('Good to go!');
+        good_lpass = true;
+    }                
+    else{
+        $('.valid-log-pass').css('color', 'red');
+        $('.valid-log-pass').html("Password should be minimum of 8 characters");
+        good_lpass = false;
+    }            
+});
+
+$('.log-pass, .log-email').on('input', function(e){
+    if(good_lemail && good_lpass){            
+        $('.js-btn').css('opacity', '1');
+        $('.js-btn').removeAttr('disabled');
+
+    }
+    else if(!(good_lemail && good_lpass)){
+        $('.js-btn').css('opacity', '0.5');
+        $('.js-btn').prop('disabled', true);
+    }                 
+});
+
 // Form Validations for Verification
 var good_code = false, good_nick = false;
 var getCode = $('.thecode').text();
-$('.thecode').append(getCode);
 
 $('.code').on('input', function(e){
     var a = $(this).val();
@@ -151,8 +207,21 @@ $('.code, .nick').on('input', function(e){
 });
 
 //Make sure to clear input after submitting
-$('.js-btn').click(function(){
+$('#verify').click(function(){
+    /*$.post($('#verification-form').attr('action'),
+        $('#verification-form:input').serializeArray(),
+        function(info){
+        
+        $('.notice').empty();
+        $('.notice').html(info);
+        
         clearInput();
+    });
+    
+    $('#verification-form').submit(function(){
+        return false;
+    });*/
+        
 });
 
 function clearInput(){
