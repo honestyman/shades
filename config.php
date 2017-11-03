@@ -89,10 +89,17 @@ function redirect($url){
 }
 
 //Handle Sessions for Verification, Login and Logout
-function  accessVerification(){
+function accessVerification(){
     if(isset($_COOKIE['valid-code']) && $_COOKIE['current-email']){
         $onVerification = true;
         return $onVerification;
+    }
+}
+
+function loggedInUser(){
+    if(isset($_SESSION['current-user'])){
+        $loggedin = true;
+        return $loggedin;
     }
 }
 ?>
