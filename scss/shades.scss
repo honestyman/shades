@@ -168,6 +168,10 @@
     text-decoration: underline;
     font-family: $Ultima;
     margin-bottom: 30px;
+    
+    span{
+        cursor: pointer;
+    }
 }
 
 .js-btn{

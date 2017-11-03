@@ -1,6 +1,11 @@
 <?php
     require_once('config.php');
     include('includes/header.php');
+
+    if(!loggedInUser()){
+        redirect(SITE_URL);
+        exit;
+    }
 ?>
 
 
@@ -8,18 +13,11 @@
     <div class="container">
         <div class="hey" style="position: absolute;">
             <img src="images/shades-logo-w80.png" alt="Shades Logo" />
-            <div class="answers" style="display: block">
+            <div class="answers" style="display: none">
                 <p>Path 1 = <span class="path1"></span></p>
                 <p>Path 2 = <span class="path2"></span></p>
                 <p>Path 3 = <span class="path3"></span></p>
                 <p>Path 4 = <span class="path4"></span></p>
-            </div>
-            <div class="answers">
-                <p>Lives left:&nbsp;<span class="lives"></span></p>
-                
-                <p>Level:&nbsp;<span class="level"></span></p>
-                
-                <p>Check Answers:&nbsp;<span class="ans"></span></p>
             </div>
         </div>
         <div class="game-container js-div" id="tbl">
@@ -49,14 +47,14 @@
                 
                 <div class="card-footer">
                         <section class="card-content modal-btn left" id="how-to">
-                            <a href="#">How to Play</a>
+                            <span>How to Play</span>
                         </section>
                         <section class="card-content" id="time">
                             <h1>TIME</h1>
                             <h1>:<span class="secs">0</span></h1>
                         </section>
                         <section class="card-content modal-btn right" id="theme">
-                            <a href="#">Light Theme</a>
+                            <span>Light Theme</span>
                         </section>                                
                 </div> 
             </div>

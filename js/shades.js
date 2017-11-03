@@ -1,12 +1,14 @@
 var ans1, ans2, ans3, ans4;
 var lives = 3;
-var max_timer = 3;
+var max_timer = 15;
 var current_level = 1;
 
 var score = 0;
 var prev_val = 0;
 var current_val = 0;
 
+var correct_ans = 0;
+var wrong_ans = 0;
 $(document).ready(function(){
     
     //Start Game
@@ -22,8 +24,6 @@ $(document).ready(function(){
        });
     });
     
-    
-    
 });
 
 function initiateStage(){
@@ -31,6 +31,7 @@ function initiateStage(){
     //call generate box  
     generateBoxes();
     
+    $('.score-here').html(score);
     $('.lives').html(lives);
     $('.level').html(current_level);
     //Find the shortest number for each shade
@@ -79,26 +80,25 @@ function initiateStage(){
 
     var answers = [ans1, ans2, ans3, ans4];
     //pass max_timer
-    $('span.secs').html(max_timer);
-
-    $('.ans').html(answers);
-
     $(function(){
         var counter = max_timer;
+        $('span.secs').html(counter);
+        
         var interval = setInterval(function(){
 
             counter -= 1;
             $( "span.secs" ).html(counter);
 
             if (counter === 0){                            
-
-                $(function(){
+                
+                //Hide Boxes after Timer runs out
+                /*$(function(){
                     $('.box').css('background-color', 'rgba(17, 17, 19, .3)');
                     $('.box > p').css('visibility', 'hidden');  
-                });
-
-                //score accumulation
-
+                });*/          
+                
+                
+                //score accumulation on click
                 var stage_clear = false;
 
                 $(".box").click(function(){
@@ -110,10 +110,10 @@ function initiateStage(){
 
                     if((num == ans1) || (num == ans2) || (num == ans3) || (num == ans4)){
 
-                        if(num == answers[0]){
+                        if(num == answers[0]){ //Current path for correct answer
 
                             removeFromArray(answers, answers[0]);
-
+                            correct_ans ++;
                             accumulateScore();
 
                             $(this).css('background-color', '#4eff4e');
@@ -123,10 +123,8 @@ function initiateStage(){
                         else{
                             var i = answers.indexOf(num);
                             removeFromArray(answers, answers[i]);
-
-                            if(score > 0){
-                            score -= getRandomNum(0, 5);
-                            }
+                            
+                            wrong_ans++;
                             lives -= 1;
                             $(this).css('background-color', '#ff7e7e');
                             $(this).children().css('visibility', 'visible');
@@ -136,10 +134,7 @@ function initiateStage(){
 
                     }
                     else{
-
-                        if(score > 0){
-                            score -= getRandomNum(0, 5);
-                        }
+                        wrong_ans++;
                         lives -= 1;
                         $(this).css('background-color', '#ff7e7e');
                         $(this).children().css('visibility', 'visible');
@@ -153,11 +148,24 @@ function initiateStage(){
                     
                     if(lives === 0){
                         $('.card-message-head').children().html('Game Over!');
-                        $('#game-btn').html('retry');
+                        $('#game-btn').html('restart');
                         $('.card-message').fadeIn('slow');
                         
                         lives = 3;
                         score = 0;
+                        current_level = 1;
+                    }
+                    
+                    else if((lives > 0) && (answers.length === 0)){
+                        $('.card-message-head').children().html('Level ' + current_level + ' done!');
+                        $('#game-btn').html('next');
+                        $('.card-message').fadeIn('slow');
+                        
+                        if(current_level % 4 === 0){
+                            max_timer = max_timer - 1;
+                        }
+                        current_level += 1;
+                        
                     }
                 
                 });
@@ -169,18 +177,9 @@ function initiateStage(){
     });
 }
 
+
 function accumulateScore(){
-    if(prev_val === 0){
-        current_val = getRandomNum(24,25);
-        score = prev_val + current_val;
-        prev_val = current_val;
-        current_val = score;
-    }
-    else{
-        score = prev_val + current_val;
-        prev_val = current_val;
-        current_val = score;
-    }
+    score += (current_level * (correct_ans - (current_level* wrong_ans)));
 }
 
 function generateBoxes(){      
