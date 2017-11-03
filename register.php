@@ -1,4 +1,5 @@
 <?php
+require('config.php');
 /*
     Register Player
 */
@@ -7,14 +8,14 @@
         $email = $pass = $confirm_pass  = "";
         $email = clean_input($dbcon, $_POST['reg-email']);
         $pass = clean_input($dbcon, md5($_POST['reg-pass']));
-        
-        
+
+
         $search_email = mysqli_query($dbcon, "SELECT email FROM tbl_players WHERE email = '$email'");
         $fetch_email = mysqli_num_rows($search_email);
-        
+
         $registered = mysqli_num_rows(mysqli_query($dbcon, "SELECT * FROM tbl_players"));
         $nickname = 'Player' . strval($registered + 1);
-        
+
         if($fetch_email > 0){
             echo "<div class='notice error'>That email has been registered already</div>";
         }
@@ -107,7 +108,7 @@
             </body>
             </html>
             ';
-            
+
             // Set content-type for sending HTML email
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -115,32 +116,34 @@
             // Additional headers
             $headers .= 'From: The Shades Team' . "\r\n";
             $headers .= 'Cc: vicismedia206@gmail.com' . "\r\n";
-            
+
             //if(mail($to, $subject, $content, $headers)){
-                
-            
+
+
                 $insert = "INSERT INTO tbl_players (email, password, nickname, best_score, status) VALUES ('$email', '$pass', '$nickname', 0, 'inactive')";  
                 if(mysqli_query($dbcon, $insert)){
                     echo "<div class='notice success'>Registration Successful. Check your email to verify this account</div>";
-                    
+
                     setcookie("valid-code", $code);
                     setcookie("current-email", $email);
+                    setcookie("current-snotice", "You're almost there! Please supply the needed information to complete your registration.");
                     header("location: verification.php");
                     exit();
                 }
                 else{
                     echo "<div class='notice error'>Can't process your request right now.</div>";
                 }
-                
+
             /*}
             else{
                 echo "<div class='notice error'>Email error</div>";
             }*/
-                
-            
+
+
         }
 
-        
+
 
     }
+
 ?>
