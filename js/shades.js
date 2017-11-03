@@ -1,7 +1,38 @@
 var ans1, ans2, ans3, ans4;
+var lives = 3;
+var max_timer = 3;
+var current_level = 1;
 
-jQuery(document).ready(function($){
+var score = 0;
+var prev_val = 0;
+var current_val = 0;
 
+$(document).ready(function(){
+    
+    //Start Game
+    $(function(){
+       $('#game-btn').click(function(){
+           $(this).parent().fadeOut('slow', function(){                
+               
+                generateBoxes();
+               
+                initiateStage();
+
+           });
+       });
+    });
+    
+    
+    
+});
+
+function initiateStage(){
+    
+    //call generate box  
+    generateBoxes();
+    
+    $('.lives').html(lives);
+    $('.level').html(current_level);
     //Find the shortest number for each shade
     var path1 = [];
     $(".shade1").each(function(){ 	
@@ -44,74 +75,115 @@ jQuery(document).ready(function($){
     $( ".path2" ).html(ans2);
     $( ".path3" ).html(ans3);
     $( ".path4" ).html(ans4);
-    
-    var score = 0;
-    var prev_val = 0;
-    var current_val = 0;
-    
-    $(".box").click(function(){
-        var num = $(this).children().text();        
-        
-        if((num==ans1) || (num==ans2) || (num==ans3) || (num==ans4)){
-            
-            
-            if(prev_val === 0){
-                current_val = getRandomNum(24,25);
-                score = prev_val + current_val;
-                prev_val = current_val;
-                current_val = score;
-            }
-            else{
-                score = prev_val + current_val;
-                prev_val = current_val;
-                current_val = score;
-            }
-            
-            $('.score-here').html(score);
-        }
-        else{
-            score -= 1;
-            $('.score-here').html(score);
-        }
-        
-        $(this).animate({
-            "opacity": "0"
-        }, 250);
-    });
-        
+
+
+    var answers = [ans1, ans2, ans3, ans4];
+    //pass max_timer
+    $('span.secs').html(max_timer);
+
+    $('.ans').html(answers);
+
     $(function(){
-        var counter = 10;
+        var counter = max_timer;
         var interval = setInterval(function(){
 
             counter -= 1;
             $( "span.secs" ).html(counter);
 
-            if (counter === 0){	
-                clearInterval(interval);
-                $(".reminder").fadeOut(500);
-            }
-        }, 1000);					
-    });
-    
-    $(function(){
-        $(".takip").delay(10000).animate({
-            "opacity": "1",
-            "top": "0"
-        }, 500);
-    });
-    
-    /*$(function(){
-        $("#theme").click(function(){
-            var theme1 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/dark-bg.png')";
-            
-            var theme2 = document.getElementById('theme').style.backgroundImage = "url('http://localhost/shades/images/light-bg.png')";
-        });
-    });*/
-    
-});
+            if (counter === 0){                            
 
-function generateBoxes(){
-    
+                $(function(){
+                    $('.box').css('background-color', 'rgba(17, 17, 19, .3)');
+                    $('.box > p').css('visibility', 'hidden');  
+                });
+
+                //score accumulation
+
+                var stage_clear = false;
+
+                $(".box").click(function(){
+
+                    //disable click events after clicking a div
+                    $(this).css('pointer-events', 'none');                                
+                    var num = parseInt(($(this).children().text()), 10);        
+
+
+                    if((num == ans1) || (num == ans2) || (num == ans3) || (num == ans4)){
+
+                        if(num == answers[0]){
+
+                            removeFromArray(answers, answers[0]);
+
+                            accumulateScore();
+
+                            $(this).css('background-color', '#4eff4e');
+                            $(this).children().css('visibility', 'visible');
+                            $(this).children().html('&#10004;');
+                        }
+                        else{
+                            var i = answers.indexOf(num);
+                            removeFromArray(answers, answers[i]);
+
+                            if(score > 0){
+                            score -= getRandomNum(0, 5);
+                            }
+                            lives -= 1;
+                            $(this).css('background-color', '#ff7e7e');
+                            $(this).children().css('visibility', 'visible');
+                            $(this).children().html('&#10060;');
+                        }
+
+
+                    }
+                    else{
+
+                        if(score > 0){
+                            score -= getRandomNum(0, 5);
+                        }
+                        lives -= 1;
+                        $(this).css('background-color', '#ff7e7e');
+                        $(this).children().css('visibility', 'visible');
+                        $(this).children().html('&#10060;');
+
+                    }
+
+                    $('.score-here').html(score);
+                    $('.lives').html(lives);
+                    $('.ans').html(answers);
+                    
+                    if(lives === 0){
+                        $('.card-message-head').children().html('Game Over!');
+                        $('#game-btn').html('retry');
+                        $('.card-message').fadeIn('slow');
+                        
+                        lives = 3;
+                        score = 0;
+                    }
+                
+                });
+                clearInterval(interval);
+            }
+        }, 1000);
+
+
+    });
+}
+
+function accumulateScore(){
+    if(prev_val === 0){
+        current_val = getRandomNum(24,25);
+        score = prev_val + current_val;
+        prev_val = current_val;
+        current_val = score;
+    }
+    else{
+        score = prev_val + current_val;
+        prev_val = current_val;
+        current_val = score;
+    }
+}
+
+function generateBoxes(){      
     
     if($(".box-container").length){
         $('.box-container').remove();
@@ -191,7 +263,7 @@ function createEachBox(){
             }
 
 
-            $('.card-holder').append("<div class='box-container'><div class='box " + current_color + "' id='" + box_id_number + "'><p>" + current_val + "</p></div><div class='takip'></div></div>");
+            $('.card-body').append("<div class='box-container'><div class='box " + current_color + "' id='" + box_id_number + "'><p>" + current_val + "</p></div></div>");
 
             out_value.push(current_val);
             box_id_number += 1;
@@ -218,6 +290,14 @@ function createEachBox(){
                 }
             }
         }
+    }
+}
+
+function removeFromArray(array, element) {
+    const index = array.indexOf(element);
+    
+    if (index !== -1) {
+        array.splice(index, 1);
     }
 }
 
