@@ -48,6 +48,25 @@
     display: block;
     max-width: 1024px;
     margin:  0 auto;
+    position: relative;
+    *zoom: 1;
+    
+    &::before,
+    &::after{
+        content: '';
+        display: table;
+        line-height: 0;        
+    }
+    
+    &::after{
+        clear: both;
+    }
+}
+
+.row{
+    max-width: 100%;
+    display: block;
+    position: relative;
     *zoom: 1;
     
     &::before,
@@ -165,15 +184,17 @@
 }
 
 .modal-btn{
+    cursor: pointer;
     text-decoration: underline;
     font-family: $Ultima;
-    margin-bottom: 30px;
-    
-    span{
-        cursor: pointer;
-    }
 }
-
+section.modal-btn{
+    margin-bottom: 30px;
+}
+span.modal-btn{
+    display: block;
+    text-align: center;
+}
 .js-btn{
     opacity: 0.7;
 }
@@ -194,6 +215,19 @@
     z-index: 10;
     overflow: hidden;
     
+    .modal-how-to{
+        width: 1120px !important;
+        min-height: 100vh;
+        
+        h1{
+            font-size: 2.5em;
+        }
+        
+        p{
+            line-height: 1.4;
+            margin: 10px 0;
+        }
+    }
     .modal-container{
         width: 420px;
         height: inherit;
@@ -210,6 +244,8 @@
             h1{
                 @include gradient-title;
             }
+            
+            
         }
         
         .modal-body {
@@ -306,6 +342,29 @@
     
 }
 
+ul.shade-guide{
+    display: block;
+    list-style-type: none;
+    
+    li{
+        display: table;
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin-right: 5px;
+        border: 2px solid gainsboro;
+        
+        p{
+            @include table-cell;
+            color: white;
+            text-align: center;
+            font-family: 'Roboto Slab', Ultima, Helvetica, Arial, sans-serif;
+            font-weight: 700;
+        }
+    }
+
+}
+
 /*Notices*/
 .notice{
     display: block;
@@ -317,7 +376,7 @@
 }
 
 .notice-gen{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 20;
@@ -462,6 +521,11 @@ section.card-content{
     
 }
 
+.profile{
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
 .card-message{
     position: absolute;
     width: 100%;
@@ -469,26 +533,26 @@ section.card-content{
     top: 0;
     left: 0;
     z-index: 10;
-    padding-top: 150px;
+    padding-top: 130px;
     background-color: gainsboro;
     background-color: rgba(17, 17, 19, .9);
     
     .card-message-head{
-        margin-bottom: 30px;
+        margin: 30px;
     }
 }
 
 /* Shades */
-.shade1{
+.shade1, .g-shade1{
 	background-color: $shade1;
 }
-.shade2{
+.shade2, .g-shade2{
 	background-color: $shade2;
 }
-.shade3{
+.shade3, .g-shade3{
 	background-color: $shade3;
 }
-.shade4{
+.shade4, .g-shade4{
 	background-color: $shade4;
 }
 

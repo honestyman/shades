@@ -46,8 +46,7 @@
 }
 
 @mixin gradient-title{
-    background: -webkit-linear-gradient(left, #2accff, #3fffe6);
-    background: linear-gradient(top, #2accff, #000);
+    background-color: #36e9f0;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     width: 100%;
