@@ -43,7 +43,8 @@
                </div>             
             </div>
             
-            <div class="modal-wrap login hidden">
+        </div>
+        <div class="modal-wrap login hidden">
                 <span class="modal-close"></span>
                 <div class="modal-container">
                     <div class="modal-head">
@@ -57,7 +58,8 @@
                             <p class="valid valid-log-pass">Please enter your password</p>
                             <button class="js-btn btn-blue btn-wide" name="log" id="log" disabled>sign in</button>     
                         </form>
-                        <a href="#" class="modal-btn link-to-reg">Or register an account</a>
+                        <span class="modal-btn link-to-reg">Register an account</span>
+                        <a class="modal-btn" href="<?php echo SITE_URL . 'guest.php'?>" target="_blank" style="margin-top: 10px;">Or play as guest</a>
                     </div>
                 </div>
             </div>
@@ -79,13 +81,14 @@
                             <button class="js-btn btn-orange btn-wide" name="reg" id="reg" disabled>register</button>  
                         </form>
                         
-                        <a href="#" class="modal-btn link-to-log">I have an account</a>
+                        <span class="modal-btn link-to-log">I have an account</span>
                     </div>
                 </div>
             </div>
             
-            
-        </div>
+            <?php
+                include('includes/howto.php');
+            ?>
     </div>
 
 <?php

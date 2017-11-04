@@ -53,6 +53,8 @@ function currentPage(){
         $page_title = "Shades | Play";
     else if($file == 'verification.php')
         $page_title = "Shades | Verify Account";
+    else if($file == 'guest.php')
+        $page_title = "Shades | Guest";
     else if($file == '404.php')
         $page_title = "Error 404";
     else if($file == '403.php')
@@ -97,7 +99,7 @@ function accessVerification(){
 }
 
 function loggedInUser(){
-    if(isset($_SESSION['current-user'])){
+    if(isset($_SESSION['current_user'])){
         $loggedin = true;
         return $loggedin;
     }

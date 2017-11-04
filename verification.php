@@ -22,7 +22,9 @@
                 }
             ?>
         
-        <div class="modal-wrap verify">
+        
+    </div>
+    <div class="modal-wrap verify">
                 
                 <div class="modal-container">
                     <div class="modal-head">
@@ -31,7 +33,7 @@
                     <div class="modal-body">
                         <form class="form-wrap" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" id="verification-form">
                             <input type="text" name="code" class="code" placeholder="verification code">
-                            <p class="valid valid-code">Please enter the code we've sent to you</p>
+                            <p class="valid valid-code">Please enter the code attached to his form</p>
                             <input type="text" name="nick" class="nick" placeholder="nickname">
                             <p class="valid valid-nick">Please give yourself a nickname</p>
                             <button class="js-btn btn-orange btn-wide" name="verify" id="verify" disabled>verify</button>
@@ -64,19 +66,17 @@
                                     }
                                     else{
                                         setcookie('current-enotice', 'Can\'t process your request right now.');
-                                        //echo "<div class='notice error'>Can't process your request right now.</div>";
                                     }
                                 }
 
                             }
 
                             ?>
-                            <div class='thecode'><?php echo $_COOKIE['valid-code']; ?></div>
+                            <div style="text-align: center">Your Code: <span class='thecode' ><?php echo $_COOKIE['valid-code']; ?></span></div>
                         </form>
                     </div>
                 </div>
             </div>
-    </div>
 </div>
 <?php
     include('includes/footer.php');

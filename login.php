@@ -5,6 +5,7 @@ require('config.php');
 */             
     
     if(isset($_POST['log'])){
+        $code = rand(111111,999999);
         $email = $pass = $confirm_pass  = "";
         $email = clean_input($dbcon, $_POST['email']);
         $pass = clean_input($dbcon, md5($_POST['password']));
@@ -18,12 +19,27 @@ require('config.php');
             exit();
         }
         else{
-            $get_nickname = mysqli_query($dbcon, "SELECT nickname FROM tbl_players WHERE email='$email'");
             
+            $check_user = mysqli_fetch_array($search_email);
             
-            $_SESSION['current-user'] = $get_nickname;
-            redirect(SITE_URL . 'shades.php');
-            exit();
+            if($check_user['status'] == 'inactive'){
+                setcookie("valid-code", $code);
+                setcookie("current-email", $email);
+                setcookie("current-enotice", "You haven't verified your account yet. Click <a href='verification.php' style='text-decoration: underline'>here</a> to verify.", time()+10);
+                redirect(SITE_URL);
+                exit();
+                
+            }
+            
+            else{
+                $search_nickname = mysqli_fetch_assoc(mysqli_query($dbcon, "SELECT * FROM tbl_players WHERE email='$email'"));
+                $get_nickname = $search_nickname['nickname'];
+                
+                $_SESSION['current_user'] = $get_nickname;
+                redirect(SITE_URL . 'shades.php');
+                exit();
+            }
+            
         }
     }
 ?>

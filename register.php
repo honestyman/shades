@@ -17,7 +17,9 @@ require('config.php');
         $nickname = 'Player' . strval($registered + 1);
 
         if($fetch_email > 0){
-            echo "<div class='notice error'>That email has been registered already</div>";
+            setcookie("current-enotice", "That email has been registered already");
+            redirect(SITE_URL);
+            exit();
         }
         else{
             $code = rand(111111,999999);
@@ -122,16 +124,17 @@ require('config.php');
 
                 $insert = "INSERT INTO tbl_players (email, password, nickname, best_score, status) VALUES ('$email', '$pass', '$nickname', 0, 'inactive')";  
                 if(mysqli_query($dbcon, $insert)){
-                    echo "<div class='notice success'>Registration Successful. Check your email to verify this account</div>";
 
                     setcookie("valid-code", $code);
                     setcookie("current-email", $email);
-                    setcookie("current-snotice", "You're almost there! Please supply the needed information to complete your registration.");
-                    header("location: verification.php");
+                    setcookie("current-snotice", "You're almost there! Please supply the needed information to complete your registration.", time()+10);
+                    redirect(SITE_URL . 'verification.php');
                     exit();
                 }
                 else{
-                    echo "<div class='notice error'>Can't process your request right now.</div>";
+                    setcookie("current-enotice", "You're almost there! Please supply the needed information to complete your registration.");
+                    redirect(SITE_URL);
+                    exit();
                 }
 
             /*}
