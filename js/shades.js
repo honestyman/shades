@@ -3,6 +3,7 @@ var lives = 3;
 var max_timer = 15;
 var current_level = 1;
 
+var best = 0;
 var score = 0;
 var prev_val = 0;
 var current_val = 0;
@@ -32,6 +33,7 @@ function initiateStage(){
     generateBoxes();
     
     $('.score-here').html(score);
+    $('.best-here').html(best);
     $('.lives').html(lives);
     $('.level').html(current_level);
     //Find the shortest number for each shade
@@ -92,10 +94,10 @@ function initiateStage(){
             if (counter === 0){                            
                 
                 //Hide Boxes after Timer runs out
-                /*$(function(){
+                $(function(){
                     $('.box').css('background-color', 'rgba(17, 17, 19, .3)');
                     $('.box > p').css('visibility', 'hidden');  
-                });*/          
+                });      
                 
                 
                 //score accumulation on click
@@ -151,6 +153,19 @@ function initiateStage(){
                         $('#game-btn').html('restart');
                         $('.card-message').fadeIn('slow');
                         
+                        
+                        
+                        var check_score = $('.best-here').html();
+                        var x = parseInt(check_score, 10);
+                        if (score > x){
+                            best = score;
+                            $('.show-score').removeClass('hidden');
+                            $('.best-score').html(best);
+                        }
+                        else {
+                            $('.show-score').addClass('hidden');
+                        }
+                        
                         lives = 3;
                         score = 0;
                         current_level = 1;
@@ -160,6 +175,8 @@ function initiateStage(){
                         $('.card-message-head').children().html('Level ' + current_level + ' done!');
                         $('#game-btn').html('next');
                         $('.card-message').fadeIn('slow');
+                        
+                        $('.show-score').addClass('hidden');
                         
                         if(current_level % 4 === 0){
                             max_timer = max_timer - 1;
@@ -179,7 +196,7 @@ function initiateStage(){
 
 
 function accumulateScore(){
-    score += (current_level * (correct_ans - (current_level* wrong_ans)));
+    score += current_level;
 }
 
 function generateBoxes(){      
@@ -196,7 +213,6 @@ function generateBoxes(){
     
 }
 
-
 function createEachBox(){
     var out_value = [], //box numbers to be pushed here
         box_id_number = 1, //set and id number for each box
@@ -206,14 +222,21 @@ function createEachBox(){
     var current_val = 0,
         current_color = '';
     
-    var shade1_num = 0, shade2_num = 0, shade3_num = 0, shade4_num = 0;
-    var range = [1,2,3,4];
+    if(current_level % 4 === 0){
+        max_val += 2;
+    }
     
     for(var i=0; i<4; i++){
+        var range = [1,2,3,4];
+        
         for(var j=0; j<4; j++){
-
-
-            var random = range[Math.floor(Math.random() * range.length)];
+            
+            if(range.length>1){
+				var random = range[Math.floor(Math.random() * range.length)];
+			}
+			else{
+				var random = range[0];
+			}
             //var random = getRandomNum(1,4);
 
             switch(random){
@@ -224,7 +247,7 @@ function createEachBox(){
                         current_val = getRandomNum(min_val,max_val);
                     }
                     current_color  = 'shade1';
-                    shade1_num += 1;
+                    removeFromArray(range,random);
                     break;
 
                 case 2:
@@ -235,7 +258,7 @@ function createEachBox(){
                     }
 
                     current_color  = 'shade2';
-                    shade2_num += 1;
+                    removeFromArray(range,random);
                     break;
 
                 case 3:
@@ -246,7 +269,7 @@ function createEachBox(){
                     }
 
                     current_color  = 'shade3';
-                    shade3_num += 1;
+                    removeFromArray(range,random);
                     break;
 
                 default:
@@ -257,7 +280,7 @@ function createEachBox(){
                     }
 
                     current_color  = 'shade4';
-                    shade4_num += 1;
+                    removeFromArray(range,random);
                     break;
             }
 
@@ -266,28 +289,6 @@ function createEachBox(){
 
             out_value.push(current_val);
             box_id_number += 1;
-
-            if(shade1_num===4){
-                var a = range.indexOf(1);
-                if (a > -1) {
-                    range.splice(a, 1);
-                }
-            }else if(shade2_num===4){
-                var b = range.indexOf(2);
-                if (b > -1) {
-                    range.splice(b, 1);
-                }
-            }else if(shade3_num===4){
-                var c = range.indexOf(3);
-                if (c > -1) {
-                    range.splice(c, 1);
-                }
-            }else if(shade4_num===4){
-                var d = range.indexOf(4);
-                if (d > -1) {
-                    range.splice(d, 1);
-                }
-            }
         }
     }
 }

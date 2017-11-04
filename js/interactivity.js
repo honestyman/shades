@@ -73,6 +73,13 @@ jQuery(document).ready(function($){
         
     });
     
+    $('#how-to').click(function(){
+        $('.how-to').fadeIn(500);
+        $('.how-to > div').animate({             top: '50%'
+        }, 'slow');
+        
+    });
+    
     
     $("#theme > span").click(function(){
         var current_theme = $('.wrap').css('background-image');
@@ -83,11 +90,14 @@ jQuery(document).ready(function($){
             $('.wrap').css('background-image', 'url("http://localhost/shades/images/light-bg.png")');
             
             $(this).html('Dark Theme');
+            $('.title p').css('background-color', '#fff');
+            
         }
         else{
             $('.wrap').css('background-image', 'url("http://localhost/shades/images/dark-bg.png")');
             
             $(this).html('Light Theme');
+            $('.title p').css('background-color', '#36e9f0');
         }
     });
     
