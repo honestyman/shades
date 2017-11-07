@@ -1,6 +1,7 @@
 jQuery(document).ready(function($){
     
-    $('.wrap').fadeIn(800, function(){
+    //Document Load Animation
+    $('.wrap, .wrapper').fadeIn(800, function(){
         $('.js-div').animate({ 
                 'margin-bottom': '0px',
                 opacity: 1
@@ -20,17 +21,25 @@ jQuery(document).ready(function($){
     });
     
     $('#js-play-btn').click(function(){
+        //Clean all input fields
         $('.reg-email').val('');
         $('.reg-pass').val('');
         $('.confirm-pass').val('');
         $('.reg-pass').val('');
         $('.log-email').val('');
         $('.log-pass').val('');
+        $('.log-admin-user').val('');
+        $('.log-admin-pass').val('');
         
+        //Default Field Message
         $('.valid-log-email, .valid-email').html('Please enter your  email');
-        $('.valid-log-email, .valid-email, .valid-log-pass, .valid-pass, .valid-confirm-pass').css('color', '#2d2d2d');
-        $('.valid-log-pass, .valid-pass').html('Please enter your password');        
-        $('.valid-confirm-pass').html('Please retype your  password');
+        $('.valid-log-pass, .valid-pass, .valid-admin-pass').html('Please enter your password');     $('.valid-confirm-pass').html('Please retype your password');
+        
+        //Admin
+        $('.valid-admin-user').html('Please enter your  username');
+        
+        //Change to default color
+        $('.valid-log-email, .valid-email, .valid-log-pass, .valid-pass, .valid-confirm-pass, .valid-admin-user, .valid-admin-pass').css('color', '#2d2d2d');
         
         
         $('.login').fadeIn('slow');
@@ -101,6 +110,31 @@ jQuery(document).ready(function($){
         }
     });
     
+    $('#side-btn-1').click(function(){
+        $('.visible').fadeOut('800', function(){
+            $(this).removeClass('visible');
+            $('.manage-content').fadeIn('80', function(){
+                $(this).addClass('visible');
+            });
+        });
+    });
     
+    $('#side-btn-2').click(function(){
+        $('.visible').fadeOut('800', function(){
+            $(this).removeClass('visible');
+            $('.manage-how-to').fadeIn('80', function(){
+                $(this).addClass('visible');
+            });
+        });
+    });
+    
+    $('#side-btn-3').click(function(){
+        $('.visible').fadeOut('800', function(){
+            $(this).removeClass('visible');
+            $('.view-players').fadeIn('80', function(){
+                $(this).addClass('visible');
+            });
+        });
+    });
     
 });

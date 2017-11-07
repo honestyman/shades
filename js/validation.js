@@ -1,4 +1,6 @@
 // Form Validations for Register
+
+
 var good_email = false, good_pass = false, good_cpass =false;
 
 $('.reg-email').on('input', function(e){
@@ -93,7 +95,10 @@ $('.confirm-pass, .reg-pass, .reg-email').on('input', function(e){
     }                 
 });
 
+
 //Form Validations for Login
+
+
 var good_lemail = false, good_lpass = false;
 
 $('.log-email').on('input', function(e){
@@ -150,7 +155,10 @@ $('.log-pass, .log-email').on('input', function(e){
     }                 
 });
 
+
 // Form Validations for Verification
+
+
 var good_code = false, good_nick = false;
 var getCode = $('.thecode').text();
 
@@ -205,6 +213,66 @@ $('.code, .nick').on('input', function(e){
         $('.js-btn').prop('disabled', true);
     }                 
 });
+
+
+//Form Validations for Admin Login
+
+
+var good_admin_user = false, good_admin_pass = false;
+
+$('.log-admin-user').on('input', function(e){
+    var a = $(this).val();
+
+    if(a.length === 0){
+        $('.valid-admin-user').css('color', 'red');
+        $('.valid-admin-user').html("This is a required field");
+        good_admin_user = false;
+    }
+    else if((a.length > 0)){  
+        $('.valid-admin-user').css('color', 'green');
+        $('.valid-admin-user').html('Good to go!');
+        good_admin_user = true;
+    }
+    else{
+        $('.valid-admin-user').css('color', 'red');
+        $('.valid-admin-user').html("Invalid Username");  
+        good_admin_user = false;
+    }            
+});
+
+$('.log-admin-pass').on('input', function(e){
+    var a = $(this).val();
+
+    if(a.length === 0){
+        $('.valid-admin-pass').css('color', 'red');
+        $('.valid-admin-pass').html("This is a required field");
+        good_admin_pass = false;
+
+    }
+    else if((a.length > 7)){  
+        $('.valid-admin-pass').css('color', 'green');
+        $('.valid-admin-pass').html('Good to go!');
+        good_admin_pass = true;
+    }                
+    else{
+        $('.valid-admin-pass').css('color', 'red');
+        $('.valid-admin-pass').html("Password should be minimum of 8 characters");
+        good_admin_pass = false;
+    }            
+});
+
+$('.log-admin-pass, .log-admin-user').on('input', function(e){
+    if(good_admin_user && good_admin_pass){            
+        $('.js-btn').css('opacity', '1');
+        $('.js-btn').removeAttr('disabled');
+
+    }
+    else if(!(good_admin_user && good_admin_pass)){
+        $('.js-btn').css('opacity', '0.5');
+        $('.js-btn').prop('disabled', true);
+    }                 
+});
+
 
 //Make sure to clear input after submitting
 $('#verify').click(function(){

@@ -196,7 +196,7 @@ span.modal-btn{
     text-align: center;
 }
 .js-btn{
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .creator{
@@ -306,7 +306,7 @@ span.modal-btn{
 .form-wrap{
     position: relative;
     
-    input[type="email"], input[type="password"],input[type="text"]{
+    input[type="email"], input[type="password"],input[type="text"], textarea{
         width: 100%;
         border: 2px solid #cbcbcb;
         color: #2d2d2d;
@@ -316,15 +316,16 @@ span.modal-btn{
         font-family: $Ultima;
     }
     
-    input[type="email"]::placeholder, input[type="password"], input[type="text"]{
-        
-    }
-    
-    input:first-child{
+    input:first-child, textarea{
         margin-top: 30px;
     }
     
-    input::placeholder{
+    textarea{
+        padding-top: 10px;
+        height: 80px;  
+    }
+    
+    input::placeholder, textarea::placeholder{
         font-family: $Ultima;
         color: #cbcbcb;
     }
@@ -602,6 +603,68 @@ section.card-content{
   100% {
     opacity: 1;
   }
+}
+
+// Admin Page
+.wrapper{
+    max-width: 100%;
+	height: 100vh;
+	position: relative;
+    background: #fff;
+    overflow: hidden;
+    font-family: $Ultima;    
+}
+
+[class*="cms-"]{
+    height: 100vh;
+    padding: 40px 30px;    
+}
+
+.cms-aside{
+    background-image: url('http://localhost/shades/images/dark-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    
+    .desc{
+        margin-bottom: 80px;
+    }
+    
+    section.modal-btn{
+        margin: 50px;
+        text-transform: uppercase;
+    }
+}
+
+.cms-body{
+    position: relative;
+    
+    [class*="content-"]{
+        width: 100%;
+        color: #383838;
+        @include absolute-center;
+    }
+    
+    .content-main{
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .welcome{
+        text-align: center;
+    }
+    
+    h1{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 2.5em;
+    }
+
+    p.kicker{
+        color: #bbbbbb;
+        font-size: 1.5em;
+        margin-top: 10px;
+    }
 }
 
 
