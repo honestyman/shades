@@ -8,7 +8,7 @@
     include('includes/header.php');
 ?>
 
-<div class="wrap">
+<div class="wrap hidden">
     <div class="container">
         
         
@@ -55,7 +55,7 @@
                                     echo "<div class='notice error'>Someone has that nickname already. Please choose anoher nickname.</div>";
                                 }
                                 else{
-                                    $query = "UPDATE tbl_players SET nickname = '$nickname', status = 'active' WHERE email =  '$user_to_update'";  
+                                    $query = "UPDATE tbl_players SET nickname = '$nickname', date_reg = now(), status = 'active' WHERE email =  '$user_to_update'";  
                                     if(mysqli_query($dbcon, $query)){
                                         
                                         setcookie('current-snotice', 'Hi ' . $nickname . '! Your account has been verified successfully. Please login to play.', time()+5);
@@ -65,7 +65,7 @@
                                         exit();
                                     }
                                     else{
-                                        setcookie('current-enotice', 'Can\'t process your request right now.');
+                                        setcookie('current-enotice', 'Can\'t process your request right now.', time()+5);
                                     }
                                 }
 

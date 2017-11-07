@@ -59,7 +59,7 @@
                             <button class="js-btn btn-blue btn-wide" name="log" id="log" disabled>sign in</button>     
                         </form>
                         <span class="modal-btn link-to-reg">Register an account</span>
-                        <a class="modal-btn" href="<?php echo SITE_URL . 'guest.php'?>" target="_blank" style="margin-top: 10px;">Or play as guest</a>
+                        <a class="modal-btn" href="<?php echo SITE_URL . 'guest'?>" target="_blank" style="margin-top: 10px;">Or play as guest</a>
                     </div>
                 </div>
             </div>
