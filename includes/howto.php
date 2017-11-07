@@ -4,7 +4,7 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-6">
-                    <img src="images/shade-how-to.png" alt="Shades Sample Card">
+                    <img src="<?php  echo $SITE_URL . 'images/shade-how-to.png'?>" alt="Shades Sample Card">
                 </div>
                 <div class="col-6">
                     <div class="row">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <img src="images/shades-ans.png" alt="Shades Sample Card 2">
+                            <img src="<?php echo $SITE_URL . 'images/shades-ans.png'?>" alt="Shades Sample Card 2">
                         </div>
                         <div class="col-6">
                             <p>So the proper sequence for this example is:</p>
