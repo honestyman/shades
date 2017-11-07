@@ -10,7 +10,7 @@ define('PROTOCOL',(!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'] == 
 define('DOMAIN',$_SERVER['HTTP_HOST']);
 define('SITE_URL', preg_replace("/\/$/",'',PROTOCOL.DOMAIN.str_replace(array('\\',"index.php","index.html"), '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))),1).'/',true);// Remove backslashes for Windows compatibility
 
-$site_url = str_replace('\\', '/', SITE_URL);
+$SITE_URL = SITE_URL;
     
 //As webpage opens start session
 session_start();
@@ -41,13 +41,14 @@ DEFINE ('DB_HOST', 'localhost');
     }
 
 //Dynamically set title
+
 function currentPage(){
     $page_title = "";
     $url = $_SERVER["SCRIPT_NAME"];
     $break = explode('/', $url);
     $file = $break[count($break) - 1];
     
-    if($file == 'index.php')
+    if($file == 'index.php' && $url == '/shades/index.php')
         $page_title = "Shades | Home";
     else if($file == 'shades.php')
         $page_title = "Shades | Play";
@@ -59,6 +60,10 @@ function currentPage(){
         $page_title = "Error 404";
     else if($file == '403.php')
         $page_title = "Access Denied!";
+    else if($file == 'index.php' && $url == '/shades/shdscms/index.php')
+        $page_title = "Shades | Admin";
+    else if($file == 'admin.php')
+        $page_title = "Shades | Admin";
     
     return $page_title;
 }
@@ -100,6 +105,13 @@ function accessVerification(){
 
 function loggedInUser(){
     if(isset($_SESSION['current_user'])){
+        $loggedin = true;
+        return $loggedin;
+    }
+}
+
+function loggedInAdmin(){
+    if(isset($_SESSION['current_admin'])){
         $loggedin = true;
         return $loggedin;
     }
