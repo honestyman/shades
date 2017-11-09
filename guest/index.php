@@ -10,13 +10,9 @@
 <div class="wrap hidden">
     <div class="container">
         <div class="hey" style="position: absolute;">
-            <a href="logout.php"><img src="../images/shades-logo-w80.png" alt="Shades Logo" style="margin-top: 30px;"/></a>
-            <div class="answers" style="display: none">
-                <p>Path 1 = <span class="path1"></span></p>
-                <p>Path 2 = <span class="path2"></span></p>
-                <p>Path 3 = <span class="path3"></span></p>
-                <p>Path 4 = <span class="path4"></span></p>
-            </div>
+            <section class="btn-wide btn-blue" id="leaderboard" style="margin-top: 50px; text-align: center;">
+                <span>leaderboard</span>
+            </section>
             
             <section class="title">
                 <p style="font-size: 1.5em; margin-top: 30px;">Level: <span class="level"></span></p>
@@ -78,6 +74,7 @@
     </div>   
     <?php
         include('../includes/howto.php');
+        include('../includes/leaderboard.php');
     ?>     
 </div>      
 <?php
