@@ -26,11 +26,14 @@
                         <p class="desc">A casual memory game for everyone</p>  
                     
                         <button class="btn-blue btn-big" id="js-play-btn">Play</button>
-                        <section class="modal-btn" id="how-to">
-                            <span>How to Play</span>
+                        <section class="modal-btn" >
+                            <span id="leaderboard">Leaderboard</span>
                         </section>
-                        <section class="modal-btn" id="theme">
-                            <span>Light Theme</span>
+                        <section class="modal-btn">
+                            <span id="how-to">How to Play</span>
+                        </section>
+                        <section class="modal-btn">
+                            <span id="theme">Light Theme</span>
                         </section>
                         <span class="creator">Made with &nbsp; &hearts; &nbsp; by Carl | Rhan | Shaun | Daniel</span>
                     </div>
@@ -86,9 +89,14 @@
                 </div>
             </div>
             
+            
+            
             <?php
                 include('includes/howto.php');
+                include('includes/leaderboard.php');
             ?>
+            
+            
     </div>
 
 <?php

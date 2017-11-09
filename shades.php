@@ -12,34 +12,24 @@
 ?>
 <div class="wrap hidden">
     <div class="container">
-        <div class="notice notice-gen"></div>
-        <div class="hey" style="position: absolute;">
-            <a href="logout.php"><img src="images/shades-logo-w80.png" alt="Shades Logo" style="margin-top: 30px;"/></a>
-            <div class="answers" style="display: none">
-                <p>Path 1 = <span class="path1"></span></p>
-                <p>Path 2 = <span class="path2"></span></p>
-                <p>Path 3 = <span class="path3"></span></p>
-                <p>Path 4 = <span class="path4"></span></p>
-            </div>
-            
-            <section class="title">
-                <p style="font-size: 1.5em; margin-top: 30px;">Level: <span class="level"></span></p>
-                
-                <p style="font-size: 1.5em; margin-top: 20px;">Lives: <span class="lives"></span></p>
-                <p style="font-size: 1.5em; margin-top: 20px;">Guide 
-                </p>
-                <ul class="shade-guide clearfix" style="margin-top: 10px;">
-                    <li class="g-shade1"></li>
-                    <li class="g-shade2"></li>
-                    <li class="g-shade3"></li>
-                    <li class="g-shade4"></li>
-                </ul>
-            </section>
-        </div>
-        <div class="game-container js-div" id="tbl">
+        <?php
+            if(isset($_COOKIE['current-snotice'])){
+                echo '<div class="notice notice-gen success">' . $_COOKIE['current-snotice'] . '</div>';
+            }
 
+            elseif(isset($_COOKIE['current-enotice'])){
+                echo '<div class="notice notice-gen error">' . $_COOKIE['current-enotice'] . '</div>';
+            }
+        ?>
+        
+        <div class="game-container js-div" id="tbl">
+            
+            
             <div class="card-holder">
-                
+                <?php
+                    $search_user = mysqli_fetch_assoc(mysqli_query($dbcon, "SELECT * FROM tbl_players WHERE nickname='$player'"));
+                    $best = $search_user['best_score'];
+                ?>
                 <div class="card-header">
                     <section class="card-content" id="score">
                         <p>SCORE</p>
@@ -50,7 +40,7 @@
                     </section>
                     <section class="card-content" id="best">
                         <p>BEST<p>
-                        <p class="best-here">0</p>
+                        <p class="best-here"><?php echo $best; ?></p>
                     </section>
                 </div>
                 
@@ -58,7 +48,7 @@
                     <div class="card-message">
                         <div class="show-score hidden"><h3>New Best Score: <span class="best-score"></span ></h3></div>
                         <div class="card-message-head"><h1>Take the challenge!</h1></div>
-                        <button class="btn btn-default btn-orange" style="font-size: 2em" id="game-btn">Start</button>
+                        <button class="btn btn-default btn-orange game-btn" style="font-size: 2em" id="game-btn">Start</button>
                     </div>
                 </div>
                 
@@ -73,28 +63,69 @@
                         <section class="card-content modal-btn right" id="theme">
                             <span>Light Theme</span>
                         </section>                                
-                </div> 
+                </div>
+                
+                <!-- Absolute divs for Displaying Information-->
+                
+                <div class="hey" style="position: absolute; top: 0; left: -300px; text-align: left">
+                    <section class="btn-wide btn-blue" id="leaderboard" style="margin-top: 50px; text-align: center;">
+                        <span>leaderboard</span>
+                    </section>
+    
+                    <section class="title">
+                        <p style="font-size: 1.2em; margin-top: 70px;">Level: <span class="level"></span></p>
+
+                        <p style="font-size: 1.2em; margin-top: 20px;">Lives: <span class="lives"></span></p>
+                        <p style="font-size: 1.2em; margin-top: 20px;">Guide 
+                        </p>
+                        <ul class="shade-guide clearfix" style="margin-top: 10px;">
+                            <li class="g-shade1"></li>
+                            <li class="g-shade2"></li>
+                            <li class="g-shade3"></li>
+                            <li class="g-shade4"></li>
+                        </ul>
+                    </section>
+                    
+                    
+                </div>
+
+                <div class="profile">
+                   <div style="text-align: right">
+                       <p >Hi <?php echo $player; ?>!</p>
+                        <a class="modal-btn" href="<?php echo SITE_URL . 'logout.php'; ?>">logout</a>
+                        
+                        <?php
+                            
+                            $user = $_SESSION['current_user'];
+                            
+                            //fetch player's information
+                            $search_user = mysqli_fetch_assoc(mysqli_query($dbcon, "SELECT * FROM tbl_players WHERE nickname='$user'"));
+                       
+                            $bestlevel = $search_user['best_level'];
+                            $bestscore = $search_user['best_score'];
+                            $date_played = strtotime($search_user['date_last_played']);
+                            
+                        ?>
+                        <section class="title">
+                            <p>Best Level Reached</p>
+                            <span class="bestlevel"><?php echo $bestlevel; ?></span>
+                            <p>Best Score Attained</p>
+                            <span class="highscore"><?php echo $bestscore; ?></span>
+                            <p>Last Date Played</p>
+                            <span class="last-active"><?php echo date("m/d/y", $date_played); ?></span>
+                        </section>
+                   </div>
+                </div>
+                      
+                <!-- Absolute divs for Displaying Information-->   
             </div>
             
         </div>
-        <div class="profile">
-           <div style="text-align: right">
-               <p >Hi <?php echo $player; ?>!</p>
-                <a class="modal-btn" href="<?php echo SITE_URL . 'logout.php'; ?>">logout</a>
-                
-                <section class="title">
-                    <p style="font-size: 1em; margin-top: 30px;">Best Score Attained</p>
-                    <span class="highscore">0</span>
-                    <p style="font-size: 1em; margin-top: 30px;">Last Date Played</p>
-                    <span class="last-active">asdasd</span>
-                </section>
-           </div>
-        </div>
-        
         
     </div>  
     <?php
         include('includes/howto.php');
+        include('includes/leaderboard.php');
     ?>      
 </div>  
 

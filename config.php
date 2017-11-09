@@ -60,6 +60,8 @@ function currentPage(){
         $page_title = "Error 404";
     else if($file == '403.php')
         $page_title = "Access Denied!";
+    else if($file == 'index.php' && $url == '/shades/guest/index.php')
+        $page_title = "Shades | Guest";
     else if($file == 'index.php' && $url == '/shades/shdscms/index.php')
         $page_title = "Shades | Admin";
     else if($file == 'admin.php')

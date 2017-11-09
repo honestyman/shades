@@ -184,9 +184,12 @@
 }
 
 .modal-btn{
-    cursor: pointer;
     text-decoration: underline;
     font-family: $Ultima;
+    
+    > span{
+            cursor: pointer;
+        }
 }
 section.modal-btn{
     margin-bottom: 30px;
@@ -194,6 +197,7 @@ section.modal-btn{
 span.modal-btn{
     display: block;
     text-align: center;
+    cursor: pointer;
 }
 .js-btn{
     opacity: 0.5;
@@ -228,6 +232,38 @@ span.modal-btn{
             margin: 10px 0;
         }
     }
+    
+    .modal-leaderboard{
+        width: 60% !important;
+        
+        .modal-head{
+            text-align: center;
+        }
+        
+        table{
+            border-collapse: collapse;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+            font-size: .9em;
+        }
+        
+        tr{
+            line-height: 2.3;
+        }
+        
+        tbody tr:nth-child(even){
+            background-color: #e1f5fe;
+        }
+        
+        thead{
+            background-color: #1d88e6 !important;
+            color: white;
+            border-radius: 15px;
+        }
+    }
+    
+    
     .modal-container{
         width: 420px;
         height: inherit;
@@ -407,6 +443,10 @@ ul.shade-guide{
     > .modal-btn{
         margin-top: 10px;
         display: block;
+        
+        > span{
+            cursor: pointer;
+        }
     }
 }
 
@@ -524,8 +564,16 @@ section.card-content{
 
 .profile{
     position: absolute;
-    top: 30px;
-    right: 0;
+    top: 50px;
+    right: -300px;
+    
+    .title p{
+        font-size: 1em;
+        margin-top: 30px;
+    }
+    .title p:nth-child(1){
+        margin-top: 80px !important;
+    }
 }
 .card-message{
     position: absolute;

@@ -1,9 +1,9 @@
 var ans1, ans2, ans3, ans4;
 var lives = 3;
-var max_timer = 15;
+var max_timer = 3;
 var current_level = 1;
 
-var best = 0;
+var best = document.getElementsByClassName('best-here').innerHTML;
 var score = 0;
 var prev_val = 0;
 var current_val = 0;
@@ -24,6 +24,31 @@ $(document).ready(function(){
            });
        });
     });
+    
+    //Update Best Score Using Ajax
+    $('.game-btn').click(function(){
+        var bestScore = best;
+        var bestLevel = $('.level').html();
+
+        if(!($('.show-score').hasClass('hidden'))){
+            $.ajax({
+              'url'     : 'update.php',
+              'method'  : 'GET',
+              'dataType' : 'html',
+              'data'     : {bestScore: bestScore, bestLevel: bestLevel},
+              'success'  : function(response){
+                            // now update player's information 
+                            $('.bestlevel').html(bestLevel);
+                            $('.highscore').html(bestScore);
+                  
+                            $('table tbody').html(response);
+                         }
+            });
+        }
+
+    });
+    
+    
     
 });
 
@@ -94,10 +119,10 @@ function initiateStage(){
             if (counter === 0){                            
                 
                 //Hide Boxes after Timer runs out
-                $(function(){
+                /*$(function(){
                     $('.box').css('background-color', 'rgba(17, 17, 19, .3)');
                     $('.box > p').css('visibility', 'hidden');  
-                });      
+                });*/      
                 
                 
                 //score accumulation on click
@@ -192,7 +217,10 @@ function initiateStage(){
 
 
     });
+    
+    
 }
+
 
 
 function accumulateScore(){

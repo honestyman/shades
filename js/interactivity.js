@@ -89,8 +89,15 @@ jQuery(document).ready(function($){
         
     });
     
+    $('#leaderboard').click(function(){
+        $('.leaderboard').fadeIn(500);
+        $('.leaderboard > div').animate({             top: '50%'
+        }, 'slow');
+        
+    });
     
-    $("#theme > span").click(function(){
+    
+    $("#theme").click(function(){
         var current_theme = $('.wrap').css('background-image');
         var a = 'url("http://localhost/shades/images/dark-bg.png")';
         var b = 'url("http://localhost/shades/images/light-bg.png")'
@@ -98,14 +105,14 @@ jQuery(document).ready(function($){
         if(current_theme === a){
             $('.wrap').css('background-image', 'url("http://localhost/shades/images/light-bg.png")');
             
-            $(this).html('Dark Theme');
+            $(this).children().html('Dark Theme');
             $('.title p').css('background-color', '#fff');
             
         }
         else{
             $('.wrap').css('background-image', 'url("http://localhost/shades/images/dark-bg.png")');
             
-            $(this).html('Light Theme');
+            $(this).children().html('Light Theme');
             $('.title p').css('background-color', '#36e9f0');
         }
     });
