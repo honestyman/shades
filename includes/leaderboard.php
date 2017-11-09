@@ -35,6 +35,9 @@ echo "<tr>
                 </tbody>
                 
             </table>
+            
+            <?php if($_SERVER['SCRIPT_NAME'] == '/shades/guest/index.php')
+            echo '<a class="modal-btn" href=' .  $SITE_URL . ' target="_blank" style="margin-top: 10px;">Register to become one of the top players</a>'?>
         </div>
     </div>
 </div>
