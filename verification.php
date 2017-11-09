@@ -52,10 +52,10 @@
                                 $fetch_nick = mysqli_num_rows($search_nick);
 
                                 if($fetch_nick > 0){
-                                    echo "<div class='notice error'>Someone has that nickname already. Please choose anoher nickname.</div>";
+                                    echo "<div class='notice error'>Someone has that nickname already. Please choose another nickname.</div>";
                                 }
                                 else{
-                                    $query = "UPDATE tbl_players SET nickname = '$nickname', date_reg = now(), status = 'active' WHERE email =  '$user_to_update'";  
+                                    $query = "UPDATE tbl_players SET nickname = '$nickname', date_reg = now(), date_last_played = now(), status = 'active' WHERE email =  '$user_to_update'";  
                                     if(mysqli_query($dbcon, $query)){
                                         
                                         setcookie('current-snotice', 'Hi ' . $nickname . '! Your account has been verified successfully. Please login to play.', time()+5);

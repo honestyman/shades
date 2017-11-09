@@ -17,7 +17,7 @@ require('config.php');
         $nickname = 'Player' . strval($registered + 1);
 
         if($fetch_email > 0){
-            setcookie("current-enotice", "That email has been registered already");
+            setcookie("current-enotice", "That email has been registered already", time()+5);
             redirect(SITE_URL);
             exit();
         }
@@ -122,7 +122,7 @@ require('config.php');
             //if(mail($to, $subject, $content, $headers)){
 
 
-                $insert = "INSERT INTO tbl_players (email, password, nickname, best_score, status) VALUES ('$email', '$pass', '$nickname', 0, 'inactive')";  
+                $insert = "INSERT INTO tbl_players (email, password, nickname, best_level, best_score, status) VALUES ('$email', '$pass', '$nickname', 0, 0, 'inactive')";  
                 if(mysqli_query($dbcon, $insert)){
 
                     setcookie("valid-code", $code);
