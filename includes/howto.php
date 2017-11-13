@@ -9,16 +9,26 @@
                 <div class="col-6">
                     <div class="row">
                         <div class="modal-head">
-                            <h1>how to play</h1>
+                            <h1>How to Play</h1>
                         </div>
-                            <p>step 1: In the grid, notice that there are four different shades of blue. Sequence them in your mind from lightest to darkest</p>
+                            <p>step 1: &nbsp;
+                            <?php
+                                $step1 = mysqli_fetch_assoc(mysqli_query($dbcon ,"SELECT * FROM tbl_howto WHERE title = 'Step 1'"));
+                                echo $step1['content'];
+                            ?>
+                            </p>
                             <ul class="shade-guide clearfix">
                                 <li class="shade1"></li>
                                 <li class="shade2"></li>
                                 <li class="shade3"></li>
                                 <li class="shade4"></li>
                             </ul>
-                            <p>step 2: Memorize the smallest number in each shade, from lightest to darkest. Like so:</p>
+                            <p>step 2: &nbsp;
+                            <?php
+                                $step2  = mysqli_fetch_assoc(mysqli_query($dbcon ,"SELECT * FROM tbl_howto WHERE title = 'Step 2'"));
+                                echo $step2['content'];
+                            ?>
+                            </p>
                     </div>
                     <div class="row">
                         <div class="col-6">
@@ -36,8 +46,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p>step 3: Note that if you have misclicked boxes that are not in the proper sequence, you'll get a wrong answer. You can still complete the level by finding the remaining values in the sequence.</p>
-                        <p>step 4: You have three lives. Memorize and complete the sequence then proceed to the next level! Goodluck and have fun!.</p>
+                        <p>step 3: &nbsp;&nbsp;
+                        <?php
+                            $step3 = mysqli_fetch_assoc(mysqli_query($dbcon ,"SELECT * FROM tbl_howto WHERE title = 'Step 3'"));
+                            echo $step3['content'];
+                        ?>
+                        </p>
+                        <p>step 4: &nbsp;
+                        <?php
+                            $step4 = mysqli_fetch_assoc(mysqli_query($dbcon ,"SELECT * FROM tbl_howto WHERE title = 'Step 4'"));
+                            echo $step4['content'];
+                        ?>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -30,8 +30,8 @@
                     <p class="desc">A casual memory game for everyone</p>  
 
                     <button class="btn-blue btn-big" id="js-play-btn">admin</button>
-                    <section class="modal-btn" id="theme">
-                        <span>Light Theme</span>
+                    <section class="modal-btn">
+                        <span id="theme">Light Theme</span>
                     </section>
                     <span class="creator">Made with &nbsp; &hearts; &nbsp; by Carl | Rhan | Shaun | Daniel</span>
                 </div>

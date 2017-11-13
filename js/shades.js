@@ -122,7 +122,7 @@ function initiateStage(){
                 /*$(function(){
                     $('.box').css('background-color', 'rgba(17, 17, 19, .3)');
                     $('.box > p').css('visibility', 'hidden');  
-                });*/      
+                });*/
                 
                 
                 //score accumulation on click

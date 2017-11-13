@@ -60,8 +60,8 @@
                             <h1>TIME</h1>
                             <h1>:<span class="secs">0</span></h1>
                         </section>
-                        <section class="card-content modal-btn right" id="theme">
-                            <span>Light Theme</span>
+                        <section class="card-content modal-btn right" >
+                            <span id="theme">Light Theme</span>
                         </section>                                
                 </div>
                 

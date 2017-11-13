@@ -17,7 +17,7 @@
                 </thead>
                 
                 <tbody>
-                   <?php $table  = mysqli_query($dbcon ,'SELECT * FROM tbl_players ORDER BY best_score DESC LIMIT 10');
+                   <?php $table  = mysqli_query($dbcon ,'SELECT * FROM tbl_players WHERE status = "active" ORDER BY best_score DESC LIMIT 10');
 $id = 0;
 while($row  = mysqli_fetch_array($table)){ 
 
@@ -37,7 +37,7 @@ echo "<tr>
             </table>
             
             <?php if($_SERVER['SCRIPT_NAME'] == '/shades/guest/index.php')
-            echo '<a class="modal-btn" href=' .  $SITE_URL . ' target="_blank" style="margin-top: 10px;">Register to become one of the top players</a>'?>
+            echo '<a class="modal-btn" href=' .  $SITE_URL . ' style="margin-top: 10px;">Register to become one of the top players</a>'?>
         </div>
     </div>
 </div>

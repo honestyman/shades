@@ -35,7 +35,6 @@
 	height: 100vh;
 	position: relative;
     background: #7f31c4;
-    background-image: url('http://localhost/shades/images/dark-bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -192,7 +191,7 @@
         }
 }
 section.modal-btn{
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 span.modal-btn{
     display: block;
@@ -231,6 +230,10 @@ span.modal-btn{
             line-height: 1.4;
             margin: 10px 0;
         }
+    }
+    
+    .modal-about{
+        width: 60% !important;
     }
     
     .modal-leaderboard{
@@ -352,13 +355,19 @@ span.modal-btn{
         font-family: $Ultima;
     }
     
-    input:first-child, textarea{
+    input:first-child, textarea, textarea.step:first-child{
         margin-top: 30px;
     }
     
-    textarea{
+    textarea.game-desc{
         padding-top: 10px;
         height: 80px;  
+    }
+    
+    textarea.step{
+        padding-top: 10px;
+        height: 60px;
+        margin-top: 10px;
     }
     
     input::placeholder, textarea::placeholder{
@@ -669,7 +678,6 @@ section.card-content{
 }
 
 .cms-aside{
-    background-image: url('http://localhost/shades/images/dark-bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -712,6 +720,40 @@ section.card-content{
         color: #bbbbbb;
         font-size: 1.5em;
         margin-top: 10px;
+    }
+    
+    
+    .view-players {
+        width: 80% !important;
+        
+        table{
+            text-align: center;
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+            max-height: 320px;
+            overflow-y: scroll;
+            font-size: .8em;
+            margin-top: 20px;
+            
+            .btn-active{
+                background-color: green !important;
+            }
+            
+            .btn-inactive{
+                background-color: red !important;
+                cursor: default !important;
+                
+            }
+            
+            #inactive > button{
+                    opacity: 0.6;
+            }
+            
+            tr{
+                line-height: 1.6    ;
+            }
+        }
     }
 }
 

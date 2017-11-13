@@ -1,6 +1,22 @@
 jQuery(document).ready(function($){
     
     //Document Load Animation
+    if(localStorage.getItem('background') === null){
+        $('.wrap, .cms-aside').css('background-image', 'url("http://localhost/shades/images/dark-bg.png")');
+    }
+    else{
+        if(localStorage.getItem('background') === 'url("http://localhost/shades/images/dark-bg.png")'){
+            $('.wrap, .cms-aside').css('background-image', localStorage.getItem('background'));            
+            $('#theme').html('Light Theme');
+            $('.title p').css('background-color', '#36e9f0');
+        }
+        else if(localStorage.getItem('background') === 'url("http://localhost/shades/images/light-bg.png")'){
+            $('.wrap, .cms-aside').css('background-image', localStorage.getItem('background'));
+            $('#theme').html('Dark Theme');
+            $('.title p').css('background-color', '#fff');
+        }
+    }
+    
     $('.wrap, .wrapper').fadeIn(800, function(){
         $('.js-div').animate({ 
                 'margin-bottom': '0px',
@@ -96,27 +112,41 @@ jQuery(document).ready(function($){
         
     });
     
+    $('#about').click(function(){
+        $('.about').fadeIn(500);
+        $('.about > div').animate({             top: '50%'
+        }, 'slow');
+        
+    });
+    
     
     $("#theme").click(function(){
         var current_theme = $('.wrap').css('background-image');
+        var current_theme_admin = $('.cms-aside').css('background-image');
         var a = 'url("http://localhost/shades/images/dark-bg.png")';
         var b = 'url("http://localhost/shades/images/light-bg.png")'
         
-        if(current_theme === a){
-            $('.wrap').css('background-image', 'url("http://localhost/shades/images/light-bg.png")');
+        if(current_theme === a || current_theme_admin === a){
+            $('.wrap, .cms-aside').css('background-image', 'url("http://localhost/shades/images/light-bg.png")');
             
-            $(this).children().html('Dark Theme');
+            $('#theme').html('Dark Theme');
             $('.title p').css('background-color', '#fff');
+            
+            localStorage.setItem('background', 'url("http://localhost/shades/images/light-bg.png")');
             
         }
         else{
-            $('.wrap').css('background-image', 'url("http://localhost/shades/images/dark-bg.png")');
+            $('.wrap, .cms-aside').css('background-image', 'url("http://localhost/shades/images/dark-bg.png")');
             
-            $(this).children().html('Light Theme');
+            $('#theme').html('Light Theme');
             $('.title p').css('background-color', '#36e9f0');
+            
+            localStorage.setItem('background', 'url("http://localhost/shades/images/dark-bg.png")');
         }
     });
     
+    
+    //Admin Dashboard Menus
     $('#side-btn-1').click(function(){
         $('.visible').fadeOut('800', function(){
             $(this).removeClass('visible');

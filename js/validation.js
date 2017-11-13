@@ -2,6 +2,7 @@
 
 
 var good_email = false, good_pass = false, good_cpass =false;
+var ajaxRequest;
 
 $('.reg-email').on('input', function(e){
     var a = $(this).val();
@@ -12,10 +13,35 @@ $('.reg-email').on('input', function(e){
         $('.valid-email').html("This is a required field");
         good_email = false;
     }
-    else if((a.length > 0) && mailformat.test(a)){  
-        $('.valid-email').css('color', 'green');
+    else if((a.length > 0) && mailformat.test(a)){
+        /*clearTimeout(ajaxRequest);
+        ajaxRequest = setTimeout(function(sn) {*/
+        $.ajax({
+          'url'     : 'checkemail.php',
+          'method'  : 'POST',
+          'dataType' : 'html',
+          'data'    : {a: a},
+          'success'  : function(response){
+                        // show notification
+              
+                        if(response === 'This email has been registered already'){
+                            $('.valid-email').css('color', 'red');
+                            $('.valid-email').html(response);
+                            good_email = false;
+                        }
+                        else{
+                            $('.valid-email').css('color', 'green');
+                            $('.valid-email').html(response);
+                            good_email = true;
+                        }
+                     }
+        });
+        /*}, 500, a);*/
+        
+        
+        /*$('.valid-email').css('color', 'green');
         $('.valid-email').html('Good to go!');
-        good_email = true;
+        good_email = true;*/
     }
     else{
         $('.valid-email').css('color', 'red');

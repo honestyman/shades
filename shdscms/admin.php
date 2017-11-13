@@ -35,7 +35,10 @@
                     <section class="modal-btn" id="side-btn-3">
                         <span>View Players</span>
                     </section>                    
-                    <section class="modal-btn" id="theme">
+                    <section class="modal-btn">
+                        <span id="theme">Light Theme</span>
+                    </section>
+                    <section class="modal-btn" id="logout">
                         <a href="<?php echo SITE_URL . 'logout.php'; ?>"><span>Logout</span></a>
                     </section>
                 </div>                
@@ -55,16 +58,8 @@
             <!-- MANAGE CONTENT FORM -->
             <div class="content-main manage-content hidden">
                 <h1>Manage Content</h1>
-                <form class="form-wrap" method="post" action="<?php echo htmlspecialchars($SITE_URL . 'shdscms/manage-content.php') ?>" id="admin-form1">
-                    <textarea name="game-desc" placeholder="About the Game" class="game-desc"></textarea>
-                    <p class="valid valid-input">To change the game description, input something here</p>
-                    <input type="text" name="game-tagline" placeholder="Tagline" class="game-tagline">
-                    <p class="valid valid-input">To change the game tagline, input something here</p>
-                    <input type="text" name="home-play-btn" placeholder="Button Copy" class="home-play-btn">
-                    <p class="valid valid-input">To change the button text, input something here</p>
-                    <input type="text" name="page-footer" placeholder="Page Footer" class="page-footer">
-                    <p class="valid valid-input">To change the footer, input something here</p>
-                    <button class="btn-blue btn-wide" name="update-content" id="update-content">update</button>     
+                <form class="form-wrap" method="post" action="<?php echo htmlspecialchars(SITE_URL) ?>" id="admin-form1">
+                         
                 </form>
             </div>
             <!-- MANAGE CONTENT FORM -->
@@ -72,24 +67,16 @@
             <!-- MANAGE HOW TO CONTENT FORM -->
             <div class="content-main manage-how-to hidden">
                 <h1>Manage How To</h1>
-                <form class="form-wrap" method="post" action="<?php echo htmlspecialchars($SITE_URL . 'shdscms/manage-content.php') ?>" id="admin-form1">
-                    <input type="text" name="step1" placeholder="Step 1 here" class="step2">
-                    <p class="valid valid-input">Contents of step 1</p>
-                    <input type="text" name="step2" placeholder="Step 2 here" class="step2">
-                    <p class="valid valid-input">Contents of step 2</p>
-                    <input type="text" name="step3" placeholder="Step 3 here" class="step3">
-                    <p class="valid valid-input">Contents of step 3</p>
-                    <input type="text" name="step4" placeholder="Step 4 here" class="step4">
-                    <p class="valid valid-input">Contents of step 4</p>
-                    
-                    <button class="btn-blue btn-wide" name="update-content" id="update-content">update</button>     
+                <form class="form-wrap" method="post" action="<?php echo htmlspecialchars(SITE_URL) ?>" id="admin-form2">
+                        
                 </form>
             </div>
             <!-- MANAGE HOW TO CONTENT FORM -->
                 
             <!-- VIEW PLAYERS -->
             <div class="content-main view-players hidden">
-                <h1>Registered Players</h1>
+                
+                
             </div>
             <!-- VIEW PLAYERS -->
             

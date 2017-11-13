@@ -31,6 +31,12 @@ require('config.php');
                 
             }
             
+            elseif($check_user['status'] == 'banned'){
+                setcookie("current-enotice", "You're account has been banned!", time()+10);
+                redirect(SITE_URL);
+                exit();
+            }
+            
             else{
                 $search_nickname = mysqli_fetch_assoc(mysqli_query($dbcon, "SELECT * FROM tbl_players WHERE email='$email'"));
                 $get_nickname = $search_nickname['nickname'];
