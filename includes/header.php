@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title><?php echo currentPage(); ?></title>
+    <title><?php echo currentPage() ? currentPage() : 'Shades'; ?></title>
     <meta name="description" content="Description of the page less than 150 characters">
     
     <link rel="icon" type="image/x-icon" href="<?php echo $SITE_URL . 'favicon.ico' ?>">    

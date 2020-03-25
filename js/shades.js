@@ -17,7 +17,7 @@ $(document).ready(function(){
        $('#game-btn').click(function(){
            $(this).parent().fadeOut('slow', function(){                
                
-                generateBoxes();
+                // generateBoxes();
                
                 initiateStage();
 
@@ -63,7 +63,7 @@ function initiateStage(){
     $('.level').html(current_level);
     //Find the shortest number for each shade
     var path1 = [];
-    $(".shade1").each(function(){ 	
+    $(".box-shade1").each(function(){ 	
         var val = $(this).children().text();
         path1.push(parseInt(val, 10));
     });	
@@ -72,7 +72,7 @@ function initiateStage(){
     ans1 = path1[0];
 
     var path2 = [];
-    $(".shade2").each(function(){ 	
+    $(".box-shade2").each(function(){ 	
         var val = $(this).children().text();
         path2.push(parseInt(val, 10));                      
 
@@ -82,7 +82,7 @@ function initiateStage(){
     ans2 = path2[0];
 
     var path3 = [];
-    $(".shade3").each(function(){ 	
+    $(".box-shade3").each(function(){ 	
         var val = $(this).children().text();
         path3.push(parseInt(val, 10));
     });	
@@ -91,7 +91,7 @@ function initiateStage(){
     ans3 = path3[0];
 
     var path4 = [];
-    $(".shade4").each(function(){ 	
+    $(".box-shade4").each(function(){ 	
         var val = $(this).children().text();
         path4.push(parseInt(val, 10));
     });	
@@ -103,7 +103,6 @@ function initiateStage(){
     $( ".path2" ).html(ans2);
     $( ".path3" ).html(ans3);
     $( ".path4" ).html(ans4);
-
 
     var answers = [ans1, ans2, ans3, ans4];
     //pass max_timer
@@ -118,11 +117,11 @@ function initiateStage(){
 
             if (counter === 0){                            
                 
-                //Hide Boxes after Timer runs out
-                /*$(function(){
+                // Hide Boxes after Timer runs out
+                $(function(){
                     $('.box').css('background-color', 'rgba(17, 17, 19, .3)');
                     $('.box > p').css('visibility', 'hidden');  
-                });*/
+                });
                 
                 
                 //score accumulation on click
@@ -229,7 +228,7 @@ function accumulateScore(){
 
 function generateBoxes(){      
     
-    if($(".box-container").length){
+    if($(".box-container").length > 0){
         $('.box-container').remove();
         
         createEachBox();
@@ -274,7 +273,7 @@ function createEachBox(){
                     while((jQuery.inArray(current_val, out_value)) > -1){
                         current_val = getRandomNum(min_val,max_val);
                     }
-                    current_color  = 'shade1';
+                    current_color  = 'box-shade1';
                     removeFromArray(range,random);
                     break;
 
@@ -285,7 +284,7 @@ function createEachBox(){
                         current_val = getRandomNum(min_val,max_val);
                     }
 
-                    current_color  = 'shade2';
+                    current_color  = 'box-shade2';
                     removeFromArray(range,random);
                     break;
 
@@ -296,7 +295,7 @@ function createEachBox(){
                         current_val = getRandomNum(min_val,max_val);
                     }
 
-                    current_color  = 'shade3';
+                    current_color  = 'box-shade3';
                     removeFromArray(range,random);
                     break;
 
@@ -307,7 +306,7 @@ function createEachBox(){
                         current_val = getRandomNum(min_val,max_val);
                     }
 
-                    current_color  = 'shade4';
+                    current_color  = 'box-shade4';
                     removeFromArray(range,random);
                     break;
             }

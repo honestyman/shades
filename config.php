@@ -19,7 +19,7 @@ session_start();
 $page_error = "";
 $database_error = "";
 
-DEFINE ('DB_NAME', 'dbase_shades');
+DEFINE ('DB_NAME', 'radian-shades');
 DEFINE ('DB_USER', 'root');
 DEFINE ('DB_PASSWORD', '');
 DEFINE ('DB_HOST', 'localhost');
@@ -37,7 +37,7 @@ DEFINE ('DB_HOST', 'localhost');
     $dbaccess = mysqli_select_db($dbcon, DB_NAME);
     
     if(!$dbaccess){
-        die ('Unable to access the Database ' . DB_NAME . mysql_error());
+        die ('Unable to access the Database ' . DB_NAME . mysqli_connect_error());
     }
 
 //Dynamically set title

@@ -1,5 +1,5 @@
 Options -Indexes
 
 RewriteEngine On
-ErrorDocument 404 /shades/404.php
-ErrorDocument 403 /shades/403.php
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
