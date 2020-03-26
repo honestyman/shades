@@ -55,6 +55,9 @@
                             
                             echo $footer['content'];
                         ?></span>
+                        <br>
+                        <span class="creator">Made with &nbsp; ♥ &nbsp; by Carl | Rhan | Shaun</span>
+                        <p class="creator" style="font-size: .75rem;">In loving memory of our dear friend <strong>Carl</strong></p>
                     </div>
                     
                </div>                
