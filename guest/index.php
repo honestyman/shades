@@ -38,7 +38,7 @@
                         <p class="score-here">0</p>
                     </section>
                     <section class="card-content title">
-                        <p>shades</p>
+                        <p><a href="<?php echo $SITE_URL; ?>">shades</a></p>
                     </section>
                     <section class="card-content" id="best">
                         <p>BEST<p>

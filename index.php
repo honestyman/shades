@@ -25,7 +25,7 @@
                <div class=" valign-mid">
                     <p class="shades">shades</p>
                     <div class="js-div">
-                        <p class="desc">                        
+                        <p class="desc">
                         <?php 
                             $tagline  = mysqli_fetch_assoc(mysqli_query($dbcon ,"SELECT * FROM tbl_content WHERE title = 'Game Tagline'"));
                             echo $tagline['content'];

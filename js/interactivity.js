@@ -1,4 +1,4 @@
-var base_url = 'http://localhost/radian/shades/';
+var base_url = $('body').data('site_url');
 
 jQuery(document).ready(function($){
     
@@ -38,8 +38,10 @@ jQuery(document).ready(function($){
         });  
     });
     
-    $('#js-play-btn').click(function(){
-        //Clean all input fields
+    $('#js-play-btn').click(function(e){
+        e.preventDefault();
+        window.location = base_url+'guest';
+        /*//Clean all input fields
         $('.reg-email').val('');
         $('.reg-pass').val('');
         $('.confirm-pass').val('');
@@ -64,7 +66,7 @@ jQuery(document).ready(function($){
         $('.login > div').animate({            
             top: '50%'
         }, 'slow');
-        
+        */
     });
     
     $('.modal-close').click(function(){        

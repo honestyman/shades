@@ -12,4 +12,4 @@
     <link rel="stylesheet" href="<?php echo $SITE_URL . 'scss/shades.min.css'?>">
     <script src="<?php echo $SITE_URL . 'js/jquery.min.js'?>"></script>
 </head>
-<body>
+<body data-site_url="<?php echo $SITE_URL; ?>">
