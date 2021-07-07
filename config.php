@@ -19,10 +19,10 @@ session_start();
 $page_error = "";
 $database_error = "";
 
-DEFINE ('DB_NAME', 'radian-shades');
-DEFINE ('DB_USER', 'root');
-DEFINE ('DB_PASSWORD', '');
-DEFINE ('DB_HOST', 'localhost');
+DEFINE ('DB_NAME', getenv('DB_NAME'));
+DEFINE ('DB_USER', getenv('DB_USER'));
+DEFINE ('DB_PASSWORD', getenv('DB_PASSWORD'));
+DEFINE ('DB_HOST', getenv('DB_HOST'));
 
 //Database configuration
     
